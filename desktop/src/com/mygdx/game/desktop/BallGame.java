@@ -8,6 +8,6 @@ import hu.csanyzeg.master.Demos.DemoMyGame;
 public class BallGame {
     public static void main (String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        new LwjglApplication(new DemoMyGame(false), config);
+        new LwjglApplication(new BallGameFolder.BallMyGame(), config);
     }
 }
