@@ -11,9 +11,9 @@ public class BallMyGameMenuStage extends MyStage {
     StartButton startButton;
     ExitButton exitButton;
     public BallMyGameMenuStage(MyGame game) {
-        super(new ExtendViewport(1600,900), game);
+        super(new ExtendViewport(160,90), game);
         startButton = new StartButton(game);
-        startButton.setPosition(70,30);
+        startButton.setPosition(30, 10);
         addActor(startButton);
         exitButton = new ExitButton(game);
         addActor(exitButton);

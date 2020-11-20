@@ -15,7 +15,7 @@ public class StartButton extends OneSpriteStaticActor {
 
     public StartButton(MyGame game) {
         super(game, "StartGomb.png");
-        this.setSize(400, 400);
+        this.setSize(30, 30);
         this.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
