@@ -8,8 +8,8 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 
 public class ExitButton extends OneSpriteStaticActor {
     public ExitButton(MyGame game) {
-        super(game, "green.png");
-        setSize(10,10);
+        super(game, "badlogic.jpg");
+        setSize(30,30);
         this.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
