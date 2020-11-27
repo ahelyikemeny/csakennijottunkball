@@ -17,7 +17,7 @@ public class WallActor extends OneSpriteStaticActor {
         this.firstStage = firstStage;
 this.setSize(10, 100);
         MyFixtureDef myFixtureDef = new MyFixtureDef();
-        setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType., myFixtureDef, BodyDef.BodyType.StaticBody));
+        setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType.Rectangle, myFixtureDef, BodyDef.BodyType.StaticBody));
 
     }
 
