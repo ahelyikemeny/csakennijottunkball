@@ -13,7 +13,7 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 public class WallActor extends OneSpriteStaticActor {
     BallMyGameStage1 firstStage;
     public WallActor(MyGame game, World world, BallMyGameStage1 firstStage, float x, float y) {
-        super(game, "box2dhelper/badlogic.jpg");
+        super(game, "badlogic.jpg");
 
 this.setSize(10, 100);
 setPosition(50,50);

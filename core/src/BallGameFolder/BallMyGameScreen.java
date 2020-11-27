@@ -11,7 +11,7 @@ public class BallMyGameScreen extends MyScreen {
 
     @Override
     protected void afterAssetsLoaded() {
-        addStage(new BallMyGameStage(game),0,true);
+        addStage(new BallMyGameStage1(game),0,true);
     }
 
     @Override
