@@ -14,10 +14,11 @@ public class WallActor extends OneSpriteStaticActor {
     BallMyGameStage1 firstStage;
     public WallActor(MyGame game, World world, BallMyGameStage1 firstStage, float x, float y) {
         super(game, "box2dhelper/badlogic.jpg");
-        this.firstStage = firstStage;
+
 this.setSize(10, 100);
+setPosition(50,50);
         MyFixtureDef myFixtureDef = new MyFixtureDef();
-        setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType., myFixtureDef, BodyDef.BodyType.StaticBody));
+        setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType.Rectangle, myFixtureDef, BodyDef.BodyType.StaticBody));
 
     }
 
