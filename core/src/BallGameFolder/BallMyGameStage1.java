@@ -14,7 +14,11 @@ public class BallMyGameStage1 extends Box2dStage {
     public BallMyGameStage1 (MyGame game) {
         super(new ExtendViewport(60, 480 ), game);
         addActor(new WallActor(game, world, this, 0, 0));
-
+addActor(new WallActor1(game, world, this, 0, 0));
+addActor(new WallActor2(game, world, this, 0, 0));
+addActor(new WallActorSmall(game, world, this, 0,0));
+addActor(new WallActorSmall1(game, world, this,0,0));
+addActor(new BallActor(game, world, 0,0));
 
 
 

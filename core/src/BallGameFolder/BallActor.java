@@ -16,7 +16,7 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 public class BallActor extends OneSpriteStaticActor {
     public BallActor(MyGame game, World world, float x, float y) {
         super(game, "box2dhelper/ball.png");
-        setPosition(x,y);
+        setPosition(345,250);
         setSize(10,10);
         MyFixtureDef myFixtureDef = new MyFixtureDef();
         myFixtureDef.density = 20;
