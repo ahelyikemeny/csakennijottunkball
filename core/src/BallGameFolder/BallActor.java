@@ -28,6 +28,6 @@ public class BallActor extends OneSpriteStaticActor {
     @Override
     protected void setStage(Stage stage) {
         super.setStage(stage);
-        Box2dStage.getBody(this).setLinearVelocity(new Vector2(0, 20));
+        Box2dStage.getBody(this).setLinearVelocity(new Vector2(10, 20));
     }
 }
