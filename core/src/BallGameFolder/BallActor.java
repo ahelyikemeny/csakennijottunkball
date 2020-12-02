@@ -16,7 +16,7 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 public class BallActor extends OneSpriteStaticActor {
     public BallActor(MyGame game, World world, float x, float y) {
         super(game, "box2dhelper/ball.png");
-        setPosition(345,250);
+        setPosition(x,y);
         setSize(10,10);
         MyFixtureDef myFixtureDef = new MyFixtureDef();
         myFixtureDef.density = 20;
@@ -28,6 +28,6 @@ public class BallActor extends OneSpriteStaticActor {
     @Override
     protected void setStage(Stage stage) {
         super.setStage(stage);
-        Box2dStage.getBody(this).setLinearVelocity(new Vector2(0, 20));
+        Box2dStage.getBody(this).setLinearVelocity(new Vector2(10, 20));
     }
 }
