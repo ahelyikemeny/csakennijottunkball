@@ -5,9 +5,11 @@ import hu.csanyzeg.master.MyBaseClasses.Game.MyGame;
 import hu.csanyzeg.master.MyBaseClasses.Scene2D.MyScreen;
 
 public class BallMyGameScreen extends MyScreen {
+
     public BallMyGameScreen(MyGame game) {
         super(game);
     }
+
 
     @Override
     protected void afterAssetsLoaded() {
@@ -19,3 +21,5 @@ public class BallMyGameScreen extends MyScreen {
         return null;
     }
 }
+
+

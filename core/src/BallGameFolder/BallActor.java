@@ -20,7 +20,7 @@ public class BallActor extends OneSpriteStaticActor {
         setSize(10,10);
         MyFixtureDef myFixtureDef = new MyFixtureDef();
         myFixtureDef.density = 20;
-        myFixtureDef.friction = 0.1f;
+        myFixtureDef.friction = 1;
         myFixtureDef.restitution = 0.8f;
         setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType.Circle, myFixtureDef, BodyDef.BodyType.DynamicBody));
     }
