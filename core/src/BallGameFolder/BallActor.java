@@ -17,7 +17,7 @@ public class BallActor extends OneSpriteStaticActor {
     public BallActor(MyGame game, World world, float x, float y) {
         super(game, "box2dhelper/ball.png");
         setPosition(x,y);
-        setSize(10,10);
+        setSize(5,5);
         MyFixtureDef myFixtureDef = new MyFixtureDef();
         myFixtureDef.density = 20;
         myFixtureDef.friction = 1;

@@ -8,11 +8,11 @@ import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.WorldBodyEditorLoader;
 import hu.csanyzeg.master.MyBaseClasses.Game.MyGame;
 import hu.csanyzeg.master.MyBaseClasses.Scene2D.MyStage;
 
-public class BallMyGameStage1 extends Box2dStage {
+public class KonnyuStage extends Box2dStage {
 
     WallActor wallActor;
 
-    public BallMyGameStage1(MyGame game) {
+    public KonnyuStage(MyGame game) {
         super(new ExtendViewport(60, 480), game);
         addActor(new WallActor(game, world, this, 0, 0));
         addActor(new WallActor1(game, world, this, 0, 0));

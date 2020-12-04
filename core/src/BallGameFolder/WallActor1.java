@@ -10,8 +10,8 @@ import hu.csanyzeg.master.MyBaseClasses.Game.MyGame;
 import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 
 public class WallActor1 extends OneSpriteStaticActor {
-    BallMyGameStage1 firstStage;
-    public WallActor1(MyGame game, World world, BallMyGameStage1 firstStage, float x, float y) {
+    KonnyuStage firstStage;
+    public WallActor1(MyGame game, World world, KonnyuStage firstStage, float x, float y) {
         super(game, "badlogic.jpg");
 
 this.setSize(250, 10);

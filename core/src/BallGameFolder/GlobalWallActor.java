@@ -9,16 +9,15 @@ import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.ShapeType;
 import hu.csanyzeg.master.MyBaseClasses.Game.MyGame;
 import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 
-public class WallActor extends OneSpriteStaticActor {
-    KonnyuStage firstStage;
-    public WallActor(MyGame game, World world, KonnyuStage firstStage, float x, float y) {
-        super(game, "badlogic.jpg");
-
-this.setSize(10, 400);
-setPosition(225,50);
+public class GlobalWallActor extends OneSpriteStaticActor {
+    public GlobalWallActor(MyGame game, World world, float x, float y) {
+        super(game,"badlogic.jpg");
+        setPosition(x,y);
+        this.setSize(400, 10);
         MyFixtureDef myFixtureDef = new MyFixtureDef();
+        myFixtureDef.density = 20;
+        myFixtureDef.friction = 1;
+        myFixtureDef.restitution = 0.8f;
         setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType.Rectangle, myFixtureDef, BodyDef.BodyType.StaticBody));
-
     }
-
 }
