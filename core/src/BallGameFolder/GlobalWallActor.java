@@ -10,10 +10,10 @@ import hu.csanyzeg.master.MyBaseClasses.Game.MyGame;
 import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 
 public class GlobalWallActor extends OneSpriteStaticActor {
-    public GlobalWallActor(MyGame game, World world, float x, float y) {
+    public GlobalWallActor(MyGame game, World world, float x, float y, float width, float height) {
         super(game,"badlogic.jpg");
         setPosition(x,y);
-        this.setSize(400, 10);
+        setSize(width,height);
         MyFixtureDef myFixtureDef = new MyFixtureDef();
         myFixtureDef.density = 20;
         myFixtureDef.friction = 1;
