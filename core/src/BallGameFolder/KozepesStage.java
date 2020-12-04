@@ -35,5 +35,12 @@ public class KozepesStage extends Box2dStage {
                 return super.touchDown(event, x, y, pointer, button);
             }
         });
+        addActor(new GlobalWallActor(game, world, 0, 0, 3, 114));
+        addActor(new GlobalWallActor(game, world, 3,0, 10, 3));
+        addActor(new GlobalWallActor(game, world, 40, 0, 114, 3));
+        addActor(new GlobalWallActor(game, world, 148, 0, 3, 114));
+        addActor(new GlobalWallActor(game, world, 138,110, 10, 3));
+        addActor(new GlobalWallActor(game, world, 0, 110, 114, 3));
+        addActor(new GlobalWallActor(game, world, 45, 60, 60, 3));
     }
 }

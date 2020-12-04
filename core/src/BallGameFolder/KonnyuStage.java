@@ -13,7 +13,7 @@ public class KonnyuStage extends Box2dStage {
 
     public KonnyuStage(MyGame game) {
         super(new ExtendViewport(60, 480), game);
-        addActor(new GlobalWallActor(game, world, 0, 0, 25, 25));
+        addActor(new GlobalWallActor(game, world, 0, 0, 50, 50));
         getWorld().setGravity(new Vector2(0,0));
         setTimeMultiply(3);
         //getWorld().;
