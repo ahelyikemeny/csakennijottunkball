@@ -10,16 +10,10 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.MyStage;
 
 public class KonnyuStage extends Box2dStage {
 
-    WallActor wallActor;
 
     public KonnyuStage(MyGame game) {
         super(new ExtendViewport(60, 480), game);
-        addActor(new WallActor(game, world, this, 0, 0));
-        addActor(new WallActor1(game, world, this, 0, 0));
-        addActor(new WallActor2(game, world, this, 0, 0));
-        addActor(new WallActorSmall(game, world, this, 0, 0));
-        addActor(new WallActorSmall1(game, world, this, 0, 0));
-        addActor(new BallActor(game, world, 280, 200));
+        addActor(new GlobalWallActor(game, world, 0, 0, 25, 25));
         getWorld().setGravity(new Vector2(0,0));
         setTimeMultiply(3);
         //getWorld().;
