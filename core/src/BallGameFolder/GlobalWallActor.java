@@ -19,5 +19,6 @@ public class GlobalWallActor extends OneSpriteStaticActor {
         myFixtureDef.friction = 1;
         myFixtureDef.restitution = 0.8f;
         setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType.Rectangle, myFixtureDef, BodyDef.BodyType.StaticBody));
+
     }
 }
