@@ -13,5 +13,6 @@ public class BallmyGameStageSelector extends MyStage {
         addActor(new KonnyuButton(game));
         addActor(new KozepesButton(game));
         addActor(new NehezButton(game));
+
     }
 }
