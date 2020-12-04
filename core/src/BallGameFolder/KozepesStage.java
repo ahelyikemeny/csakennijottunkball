@@ -18,6 +18,5 @@ public class KozepesStage extends Box2dStage {
         addActor(new GlobalWallActor(game, world, 138,110, 10, 3));
         addActor(new GlobalWallActor(game, world, 0, 110, 114, 3));
         addActor(new GlobalWallActor(game, world, 45, 60, 60, 3));
-
     }
 }
