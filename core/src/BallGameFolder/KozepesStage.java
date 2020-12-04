@@ -11,6 +11,6 @@ public class KozepesStage extends Box2dStage {
     WallActor wallActor;
     public KozepesStage(MyGame game) {
         super(new ExtendViewport(150,90), game);
-        addActor(new BallActor(game, world, 50,50));
+        addActor(new BallActor(game, world, 70,40));
     }
 }
