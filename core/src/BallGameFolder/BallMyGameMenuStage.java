@@ -15,11 +15,12 @@ public class BallMyGameMenuStage extends MyStage {
     CreditButton creditButton;
     public BallMyGameMenuStage(MyGame game) {
         super(new ExtendViewport(160,90), game);
+        addActor(new BackgroundActor(game, 0,0));
         startButton = new StartButton(game);
-        startButton.setPosition(65,80);
+        startButton.setPosition(10,20);
         addActor(startButton);
         exitButton = new ExitButton(game);
-        exitButton.setPosition(65,20);
+        exitButton.setPosition(110,20);
         this.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -30,7 +31,9 @@ public class BallMyGameMenuStage extends MyStage {
         });
         addActor(exitButton);
         creditButton = new CreditButton(game);
-        creditButton.setPosition(65,50);
+        creditButton.setPosition(60,20);
         addActor(creditButton);
+
+
     }
 }

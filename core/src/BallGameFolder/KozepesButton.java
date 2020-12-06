@@ -8,8 +8,8 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 
 public class KozepesButton extends OneSpriteStaticActor {
     public KozepesButton(MyGame game) {
-        super(game, "startgomb.png");
-        setSize(30,30);
+        super(game, "Medium Gomb.png");
+        setSize(40,40);
         setPosition(60,40);
         this.addListener(new ClickListener() {
             @Override

@@ -1,5 +1,7 @@
 package BallGameFolder;
 
+import com.badlogic.gdx.audio.Music;
+
 import hu.csanyzeg.master.MyBaseClasses.Assets.AssetList;
 import hu.csanyzeg.master.MyBaseClasses.Game.MyGame;
 import hu.csanyzeg.master.MyBaseClasses.Scene2D.MyScreen;

@@ -9,7 +9,8 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.ResponseViewport;
 
 public class BallmyGameStageSelector extends MyStage {
     public BallmyGameStageSelector(MyGame game) {
-        super(new ExtendViewport(150,90), game);
+        super(new ExtendViewport(160,90), game);
+        addActor(new InGameBackgroundActor(game));
         addActor(new KonnyuButton(game));
         addActor(new KozepesButton(game));
         addActor(new NehezButton(game));

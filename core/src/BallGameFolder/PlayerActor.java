@@ -1,13 +1,16 @@
 package BallGameFolder;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Box2D;
+import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.joints.MouseJoint;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.Box2DWorldHelper;
+import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.MyContactListener;
 import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.MyFixtureDef;
 import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.MyJoint;
 import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.ShapeType;
@@ -22,11 +25,36 @@ public class PlayerActor extends OneSpriteStaticActor {
     MouseJoint j;
 
     public PlayerActor(MyGame game, World world,  float x, float y) {
-        super(game, "badlogic.jpg");
-        setSize(20,20);
+        super(game, "box2dhelper/ball.png");
+        setSize(10,10);
         setPosition(x,y);
         setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType.Circle, new MyFixtureDef(), BodyDef.BodyType.DynamicBody));
         this.world = world;
+
+        ((Box2DWorldHelper)getActorWorldHelper()).addContactListener(new MyContactListener() {
+            @Override
+            public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
+                if (otherHelper.actor instanceof PlayerActor){
+                    game.getMyAssetManager().getSound("onclick.mp3").play();
+                    System.out.println("Eltalált egy actort");
+                }
+            }
+
+            @Override
+            public void endContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
+
+            }
+
+            @Override
+            public void preSolve(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
+
+            }
+
+            @Override
+            public void postSolve(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
+
+            }
+        });
         //this.addListener(new Joint() {
 //this.setSize(20,20);public class PlayerActor extends OneSpriteStaticActor {
 //    PlayerActor playerActor;

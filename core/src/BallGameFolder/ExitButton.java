@@ -13,7 +13,7 @@ public class ExitButton extends OneSpriteStaticActor {
 
     public ExitButton(MyGame game) {
         super(game, "ExitGomb.png");
-        setSize(30,30);
+        setSize(40,40);
         this.addListener(cl = new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
