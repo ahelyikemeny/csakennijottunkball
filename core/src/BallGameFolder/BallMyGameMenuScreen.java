@@ -24,4 +24,11 @@ public class BallMyGameMenuScreen extends MyScreen {
     public AssetList getAssetList() {
         return null;
     }
+
+
+    @Override
+    public void hide() {
+        super.hide();
+        music.stop();
+    }
 }
