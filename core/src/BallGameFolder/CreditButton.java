@@ -16,7 +16,7 @@ public class CreditButton extends OneSpriteStaticActor {
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
                 game.getMyAssetManager().getSound("onclick.mp3").play();
-                game.setScreen(new BallMyGameScreen(game));
+                game.setScreen(new CreditScreen(game));
 
 
             }

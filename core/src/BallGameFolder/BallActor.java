@@ -40,7 +40,7 @@ public class BallActor extends OneSpriteStaticActor {
                     Sound s = game.getMyAssetManager().getSound("onclick.mp3");
                     System.out.println(myHelper.getBody().getLinearVelocity().len());
                     float speed = myHelper.getBody().getLinearVelocity().len();
-                    s.play(speed < 20f ? 0f : (speed > 80f ? 1f : ( (speed - 20f) / 60f )));
+                    s.play(speed < 35f ? 0f : (speed > 80f ? 1f : ( (speed - 20f) / 45f )));
                 }
             });
 
