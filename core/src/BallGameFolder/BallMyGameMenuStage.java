@@ -15,6 +15,7 @@ public class BallMyGameMenuStage extends MyStage {
     CreditButton creditButton;
     public BallMyGameMenuStage(MyGame game) {
         super(new ExtendViewport(160,90), game);
+        addBackButtonScreenBackByStackPopListener();
         addActor(new BackgroundActor(game, 0,0));
         startButton = new StartButton(game);
         startButton.setPosition(10,20);

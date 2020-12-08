@@ -16,6 +16,7 @@ public class BallMyGameScreen extends MyScreen {
     @Override
     protected void afterAssetsLoaded() {
         addStage(new BallmyGameStageSelector(game), 0, true);
+        ((BallMyGame)game).setMusic(BallMyGame.MusicType.MAIN);
         /*addStage(new BallMyGameStage1(game),0,true);*/
     }
 

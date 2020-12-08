@@ -69,15 +69,17 @@ public class PlayerActor extends OneSpriteStaticActor {
     @Override
     protected void setStage(Stage stage) {
         super.setStage(stage);
-        target = new OneSpriteStaticActor(game, "badlogic.jpg") ;
-        target.setPosition(getX(),getY());
-        target.setSize(getWidth(),getHeight());
-        target.setActorWorldHelper(new Box2DWorldHelper(world, target, ShapeType.Circle, new MyFixtureDef(), BodyDef.BodyType.StaticBody));
-        target.setVisible(false);
-        getStage().addActor(target);
-        j = (MouseJoint) MyJoint.createMouseJoint(target , this,9999999f).joint;
-        j.setDampingRatio(0.2f);
-        j.setFrequency(5);
+        if (stage != null) {
+            target = new OneSpriteStaticActor(game, "badlogic.jpg");
+            target.setPosition(getX(), getY());
+            target.setSize(getWidth(), getHeight());
+            target.setActorWorldHelper(new Box2DWorldHelper(world, target, ShapeType.Circle, new MyFixtureDef(), BodyDef.BodyType.StaticBody));
+            target.setVisible(false);
+            getStage().addActor(target);
+            j = (MouseJoint) MyJoint.createMouseJoint(target, this, 9999999f).joint;
+            j.setDampingRatio(0.2f);
+            j.setFrequency(5);
+        }
     }
 
     public void moveTo(float x, float y){
