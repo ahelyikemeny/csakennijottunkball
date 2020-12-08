@@ -50,6 +50,7 @@ public class BallActor extends OneSpriteStaticActor {
                     super.onTick(sender, correction);
                     Vector2 newspeed = ((Box2DWorldHelper)BallActor.this.getActorWorldHelper()).getBody().getLinearVelocity().scl(0.993f);
                     ((Box2DWorldHelper)BallActor.this.getActorWorldHelper()).getBody().setLinearVelocity(newspeed);
+                    ((Box2DWorldHelper)BallActor.this.getActorWorldHelper()).getBody().setAngularVelocity(0.993f);
                 }
             }));
 

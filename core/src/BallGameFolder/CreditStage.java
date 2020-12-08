@@ -9,5 +9,6 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.MyStage;
 public class CreditStage extends MyStage {
     public CreditStage(MyGame game) {
         super(new ExtendViewport(160,90), game);
+        addBackButtonScreenBackByStackPopListener();
     }
 }

@@ -74,23 +74,22 @@ public class KozepesStage extends Box2dStage {
         });
 
         MyLabel myLabel = new MyLabel(game, "", new CounterLabelStyle(game));
-        myLabel.setFontScale(0.5f);
-        myLabel.setAlignment(2);
         addActor(myLabel);
-        myLabel.setPositionCenterOfActorToCenterOfViewport();
+        myLabel.setPosition(68, 105);
+        myLabel.setFontScale(0.3f);
 
 
-        addTimer(new MultiTickTimer(1f, 5, new MultiTickTimerListener(){
+        addTimer(new MultiTickTimer(1f, 180, new MultiTickTimerListener(){
             @Override
             public void onTick(MultiTickTimer sender, float correction, int count) {
                 super.onTick(sender, correction, count);
-                myLabel.setText(5-count);
+                myLabel.setText(180-count);
             }
 
             @Override
             public void onStart(MultiTickTimer sender) {
                 super.onStart(sender);
-                myLabel.setText(5);
+                myLabel.setText(180);
             }
 
             @Override

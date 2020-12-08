@@ -10,6 +10,7 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.MyStage;
 public class NehezStage extends Box2dStage {
     public NehezStage(MyGame game) {
         super(new ExtendViewport(150,90), game);
+        addBackButtonScreenBackByStackPopListener();
         addActor(new InGameBackgroundActor(game));
         addActor(new GlobalWallActor(game, world, 0, 0, 3, 114));
         addActor(new GlobalWallActor(game, world, 3,0, 10, 3));

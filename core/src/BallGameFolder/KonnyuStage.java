@@ -13,6 +13,7 @@ public class KonnyuStage extends Box2dStage {
 
     public KonnyuStage(MyGame game) {
         super(new ExtendViewport(160, 90), game);
+        addBackButtonScreenBackByStackPopListener();
         addActor(new InGameBackgroundActor(game));
         addActor(new GlobalWallActor(game, world, 0, 0, 50, 50));
         getWorld().setGravity(new Vector2(0,0));
