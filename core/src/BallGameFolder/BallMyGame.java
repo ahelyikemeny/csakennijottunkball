@@ -27,11 +27,13 @@ public class BallMyGame extends MyGame {
                     music = getMyAssetManager().getMusic("mainmusic.mp3");
                     music.setLooping(true);
                     music.play();
+                    music.setVolume(0.5f);
                     break;
                 case GAME:
                     music = getMyAssetManager().getMusic("ingamemusic.mp3");
                     music.setLooping(true);
                     music.play();
+                    music.setVolume(0.5f);
                     break;
                 case NONE:
                     break;

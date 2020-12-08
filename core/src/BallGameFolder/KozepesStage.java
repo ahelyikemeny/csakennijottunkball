@@ -1,23 +1,33 @@
 package BallGameFolder;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.Box2DWorldHelper;
 import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.Box2dStage;
+import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.MyContactListener;
 import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.WorldBodyEditorLoader;
 import hu.csanyzeg.master.MyBaseClasses.Game.MyGame;
+import hu.csanyzeg.master.MyBaseClasses.Timers.MultiTickTimer;
+import hu.csanyzeg.master.MyBaseClasses.Timers.MultiTickTimerListener;
+import hu.csanyzeg.master.MyBaseClasses.UI.MyLabel;
 
 public class KozepesStage extends Box2dStage {
     protected PlayerActor player1;
 
     public KozepesStage(MyGame game) {
         super(new ExtendViewport(150,90), game);
+
         addBackButtonScreenBackByStackPopListener();
         addActor(new InGameBackgroundActor(game));
-        addActor(new BallActor(game, world, 70,40));
+        BallActor ballActor;
+        addActor(ballActor = new BallActor(game, world, 70,40));
         addActor(new GlobalWallActor(game, world, 0, 0, 3, 30));
         player1 = new PlayerActor(game, world, 10,50);
         addActor(player1);
@@ -44,5 +54,54 @@ public class KozepesStage extends Box2dStage {
         addActor(new GlobalWallActor(game, world, 138,110, 10, 3));
         addActor(new GlobalWallActor(game, world, 0, 110, 114, 3));
         addActor(new GlobalWallActor(game, world, 45, 60, 60, 3));
+        SensorActor sensorActor;
+        addActor(sensorActor = new SensorActor(game,world,30,30));
+
+        getHelper(sensorActor).addContactListener(new MyContactListener() {
+            @Override
+            public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
+                if (otherHelper.getActor() instanceof BallActor){
+                    otherHelper.getActor().setPosition(70,40);
+                    otherHelper.invoke(new Runnable() {
+                        @Override
+                        public void run() {
+                            otherHelper.getBody().setLinearVelocity(0,0);
+                            otherHelper.getBody().setAngularVelocity(0);
+                        }
+                    });
+                }
+            }
+        });
+
+        MyLabel myLabel = new MyLabel(game, "", new CounterLabelStyle(game));
+        myLabel.setFontScale(0.5f);
+        myLabel.setAlignment(2);
+        addActor(myLabel);
+        myLabel.setPositionCenterOfActorToCenterOfViewport();
+
+
+        addTimer(new MultiTickTimer(1f, 5, new MultiTickTimerListener(){
+            @Override
+            public void onTick(MultiTickTimer sender, float correction, int count) {
+                super.onTick(sender, correction, count);
+                myLabel.setText(5-count);
+            }
+
+            @Override
+            public void onStart(MultiTickTimer sender) {
+                super.onStart(sender);
+                myLabel.setText(5);
+            }
+
+            @Override
+            public void onStop(MultiTickTimer sender) {
+                super.onStop(sender);
+                myLabel.setText("Game Over");
+            }
+        }));
+
+
+
+
     }
 }

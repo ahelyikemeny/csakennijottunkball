@@ -24,6 +24,7 @@ public class MultiTickTimer extends ETTimer<MultiTickTimerListener> {
             }
             elapsedTime = correction;
             if (count == targetCount){
+                stop();
                 remove();
             }
         }
