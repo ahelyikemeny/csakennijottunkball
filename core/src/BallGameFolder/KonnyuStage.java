@@ -50,12 +50,12 @@ public class KonnyuStage extends Box2dStage {
         addActor(new GlobalWallActor(game, world, 20, 0, 10, 5));
         addActor(new GlobalWallActor(game, world, 30, 0, 10, 5));
         addActor(new GlobalWallActor(game, world, 40,0, 10, 5));
-        addActor(new GlobalWallActor(game, world, 50, 0, 10, 5));
-        addActor(new GlobalWallActor(game, world, 60, 0, 10, 5));
+        /*addActor(new GlobalWallActor(game, world, 50, 0, 10, 5));*/
+        /*addActor(new GlobalWallActor(game, world, 60, 0, 10, 5));*/
         /*addActor(new GlobalWallActor(game, world, 70, 0, 10, 5));*/
         /*addActor(new GlobalWallActor(game, world, 80,0, 10, 5));*/
-        addActor(new GlobalWallActor(game, world, 90, 0, 10, 5));
-        addActor(new GlobalWallActor(game, world, 100, 0, 10, 5));
+        /*addActor(new GlobalWallActor(game, world, 90, 0, 10, 5));*/
+        /*addActor(new GlobalWallActor(game, world, 100, 0, 10, 5));*/
         addActor(new GlobalWallActor(game, world, 110,0, 10, 5));
         addActor(new GlobalWallActor(game, world, 120, 0, 10, 5));
         addActor(new GlobalWallActor(game, world, 130, 0, 10, 5));
@@ -158,7 +158,7 @@ public class KonnyuStage extends Box2dStage {
 
 
         SensorActor sensorActor;
-        addActor(sensorActor = new SensorActor(game,world,30,30));
+        addActor(sensorActor = new SensorActor(game,world,50,-3, 60, 5));
 
         getHelper(sensorActor).addContactListener(new MyContactListener() {
             @Override
