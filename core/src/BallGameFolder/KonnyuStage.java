@@ -20,6 +20,8 @@ import jdk.nashorn.internal.objects.Global;
 public class KonnyuStage extends Box2dStage {
 
     protected PlayerActor player1;
+    protected int point = 0;
+
     public KonnyuStage(MyGame game) {
         super(new ExtendViewport(160, 90), game);
         addBackButtonScreenBackByStackPopListener();
@@ -176,6 +178,7 @@ public class KonnyuStage extends Box2dStage {
             public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
                 if (otherHelper.getActor() instanceof BallActor){
                     otherHelper.getActor().setPosition(80,75);
+                    point++;
                     otherHelper.invoke(new Runnable() {
                         @Override
                         public void run() {
