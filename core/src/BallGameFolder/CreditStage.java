@@ -14,8 +14,9 @@ public class CreditStage extends MyStage {
         super(new ExtendViewport(160,90), game);
         Label.LabelStyle labelStyle = new Label.LabelStyle();
         labelStyle.font = game.getMyAssetManager().getFont("alegreyaregular.otf");
-        labelStyle.fontColor = Color.BLUE;
+        labelStyle.fontColor = Color.BLACK;
         addBackButtonScreenBackByStackPopListener();
+        addActor(new InGameBackgroundActor(game));
         MyLabel label = new MyLabel(game, "Creators:", labelStyle);
         label.setFontScale(0.2f);
         label.setPosition(20,70);
