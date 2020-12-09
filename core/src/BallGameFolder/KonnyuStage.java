@@ -15,6 +15,7 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.MyStage;
 import hu.csanyzeg.master.MyBaseClasses.Timers.MultiTickTimer;
 import hu.csanyzeg.master.MyBaseClasses.Timers.MultiTickTimerListener;
 import hu.csanyzeg.master.MyBaseClasses.UI.MyLabel;
+import jdk.nashorn.internal.objects.Global;
 
 public class KonnyuStage extends Box2dStage {
 
@@ -24,7 +25,7 @@ public class KonnyuStage extends Box2dStage {
         addBackButtonScreenBackByStackPopListener();
         addActor(new InGameBackgroundActor(game));
         BallActor ballActor;
-        addActor(ballActor = new BallActor(game, world, 70,40));
+        addActor(ballActor = new BallActor(game, world, 75,75));
         addActor(new GlobalWallActor(game, world, 0, 5, 6, 3));
         player1 = new PlayerActor(game, world, 10,50);
         addActor(player1);
@@ -156,6 +157,10 @@ public class KonnyuStage extends Box2dStage {
         addActor(new GlobalWallActor(game, world, 154, 110, 6, 3));
         addActor(new GlobalWallActor(game, world, 154, 113, 6, 3));
 
+        addActor(new GlobalWallActor(game,world, 30, 55, 20,10));
+        addActor(new GlobalWallActor(game,world, 110, 55, 20,10));
+        addActor(new GlobalWallActor(game,world, 70, 35, 20,10));
+
 
         SensorActor sensorActor;
         addActor(sensorActor = new SensorActor(game,world,50,-3, 60, 5));
@@ -164,7 +169,7 @@ public class KonnyuStage extends Box2dStage {
             @Override
             public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
                 if (otherHelper.getActor() instanceof BallActor){
-                    otherHelper.getActor().setPosition(70,40);
+                    otherHelper.getActor().setPosition(80,75);
                     otherHelper.invoke(new Runnable() {
                         @Override
                         public void run() {
@@ -178,7 +183,7 @@ public class KonnyuStage extends Box2dStage {
 
         MyLabel myLabel = new MyLabel(game, "", new CounterLabelStyle(game));
         addActor(myLabel);
-        myLabel.setPosition(68, 105);
+        myLabel.setPosition(75, 105);
         myLabel.setFontScale(0.3f);
 
 

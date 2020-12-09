@@ -19,6 +19,7 @@ import hu.csanyzeg.master.MyBaseClasses.Timers.PermanentTimer;
 import hu.csanyzeg.master.MyBaseClasses.Timers.PermanentTimerListener;
 
 public class BallActor extends OneSpriteStaticActor {
+    BallActor ballActor;
     public BallActor(MyGame game, World world, float x, float y) {
         super(game, "box2dhelper/ball.png");
         setPosition(x,y);
@@ -29,6 +30,7 @@ public class BallActor extends OneSpriteStaticActor {
         myFixtureDef.restitution = 0.8f;
         setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType.Circle, myFixtureDef, BodyDef.BodyType.DynamicBody));
     }
+
 
     @Override
     protected void setStage(Stage stage) {

@@ -19,6 +19,6 @@ public class SensorActor extends OneSpriteStaticActor {
         myFixtureDef.friction = 1;
         myFixtureDef.restitution = 0.8f;
         myFixtureDef.isSensor = true;
-        setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType.Circle, myFixtureDef, BodyDef.BodyType.StaticBody));
+        setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType.Rectangle, myFixtureDef, BodyDef.BodyType.StaticBody));
     }
 }
