@@ -32,6 +32,7 @@ public class BallActor extends OneSpriteStaticActor {
 
     Vector2 lastClick = null;
 
+
     @Override
     protected void setStage(Stage stage) {
         super.setStage(stage);

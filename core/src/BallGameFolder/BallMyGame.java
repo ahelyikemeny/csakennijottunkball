@@ -47,5 +47,6 @@ public class BallMyGame extends MyGame {
     public void create() {
         super.create();
         setScreen(new BallMyGameMenuScreen(this));
+        debug = true;
     }
 }
