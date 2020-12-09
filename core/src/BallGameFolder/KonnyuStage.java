@@ -118,6 +118,11 @@ public class KonnyuStage extends Box2dStage {
         addActor(new GlobalWallActor(game, world, 0, 110, 6, 3));
         addActor(new GlobalWallActor(game, world, 0, 113, 6, 3));
         /*Jobb oldal*/
+
+        for(int i = 5; i<=113; i = i + 3){
+            addActor(new GlobalWallActor(game, world, 154, i, 6, 3));
+        }
+       /*
         addActor(new GlobalWallActor(game, world, 154, 5, 6, 3));
         addActor(new GlobalWallActor(game, world, 154, 8, 6, 3));
         addActor(new GlobalWallActor(game, world, 154, 11, 6, 3));
@@ -155,7 +160,7 @@ public class KonnyuStage extends Box2dStage {
         addActor(new GlobalWallActor(game, world, 154, 107, 6, 3));
         addActor(new GlobalWallActor(game, world, 154, 110, 6, 3));
         addActor(new GlobalWallActor(game, world, 154, 113, 6, 3));
-
+*/
 
         SensorActor sensorActor;
         addActor(sensorActor = new SensorActor(game,world,50,-3, 60, 5));

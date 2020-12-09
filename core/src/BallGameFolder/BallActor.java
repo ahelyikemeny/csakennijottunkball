@@ -30,6 +30,8 @@ public class BallActor extends OneSpriteStaticActor {
         setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType.Circle, myFixtureDef, BodyDef.BodyType.DynamicBody));
     }
 
+    Vector2 lastClick = null;
+
     @Override
     protected void setStage(Stage stage) {
         super.setStage(stage);
@@ -37,10 +39,22 @@ public class BallActor extends OneSpriteStaticActor {
             ((Box2DWorldHelper)getActorWorldHelper()).addContactListener(new MyContactListener() {
                 @Override
                 public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
-                    Sound s = game.getMyAssetManager().getSound("onclick.mp3");
+                    if (lastClick == null){
+                        lastClick = new Vector2(myHelper.body.getPosition());
+                            game.getMyAssetManager().getSound("onclick.mp3").play();
+                    }else{
+                        if (lastClick.sub(myHelper.body.getPosition()).len() > 10f){
+                             game.getMyAssetManager().getSound("onclick.mp3").play();
+                        }
+                        lastClick.set(myHelper.body.getPosition());
+                    }
+
+                    /*
                     System.out.println(myHelper.getBody().getLinearVelocity().len());
                     float speed = myHelper.getBody().getLinearVelocity().len();
                     s.play(speed < 35f ? 0f : (speed > 80f ? 1f : ( (speed - 20f) / 45f )));
+
+                     */
                 }
             });
 
