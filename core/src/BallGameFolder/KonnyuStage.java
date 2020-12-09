@@ -75,8 +75,8 @@ public class KonnyuStage extends Box2dStage {
         addActor(new GlobalWallActor(game,world, 70, 35, 20,10));
         MyLabel myLabel1 = new MyLabel(game, "", new PontCounter(game));
         addActor(myLabel1);
-        myLabel1.setPositionCenter();
         myLabel1.setFontScale(0.3f);
+        myLabel1.setPosition(75,85);
 
 
         SensorActor sensorActor;
@@ -105,18 +105,18 @@ public class KonnyuStage extends Box2dStage {
 
 
 
-        addTimer(new MultiTickTimer(1f, 5, new MultiTickTimerListener(){
+        addTimer(new MultiTickTimer(1f, 180, new MultiTickTimerListener(){
             @Override
             public void onTick(MultiTickTimer sender, float correction, int count) {
                 super.onTick(sender, correction, count);
-                myLabel.setText(5-count);
+                myLabel.setText(180-count);
                 myLabel.setFontScale(0.5f);
             }
 
             @Override
             public void onStart(MultiTickTimer sender) {
                 super.onStart(sender);
-                myLabel.setText(5);
+                myLabel.setText(180);
                 myLabel.setFontScale(0.5f);
             }
 
@@ -124,8 +124,6 @@ public class KonnyuStage extends Box2dStage {
             public void onStop(MultiTickTimer sender) {
                 super.onStop(sender);
                 myLabel.setText("Game Over");
-                myLabel1.setText(point);
-                myLabel1.setPositionCenter();
             }
         //getWorld().;
         }));
