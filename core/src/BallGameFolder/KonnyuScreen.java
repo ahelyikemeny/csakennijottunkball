@@ -12,6 +12,7 @@ public class KonnyuScreen extends MyScreen {
     @Override
     protected void afterAssetsLoaded() {
         addStage(new KonnyuStage(game), 0, true);
+        ((BallMyGame)game).setMusic(BallMyGame.MusicType.GAME);
 
     }
 

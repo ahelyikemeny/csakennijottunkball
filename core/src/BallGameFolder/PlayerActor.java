@@ -25,36 +25,12 @@ public class PlayerActor extends OneSpriteStaticActor {
     MouseJoint j;
 
     public PlayerActor(MyGame game, World world,  float x, float y) {
-        super(game, "box2dhelper/ball.png");
+        super(game, "PlayerActor.png");
         setSize(10,10);
         setPosition(x,y);
         setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType.Circle, new MyFixtureDef(), BodyDef.BodyType.DynamicBody));
         this.world = world;
 
-        ((Box2DWorldHelper)getActorWorldHelper()).addContactListener(new MyContactListener() {
-            @Override
-            public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
-                if (otherHelper.actor instanceof PlayerActor){
-                    game.getMyAssetManager().getSound("onclick.mp3").play();
-                    System.out.println("Eltalált egy actort");
-                }
-            }
-
-            @Override
-            public void endContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
-
-            }
-
-            @Override
-            public void preSolve(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
-
-            }
-
-            @Override
-            public void postSolve(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
-
-            }
-        });
         //this.addListener(new Joint() {
 //this.setSize(20,20);public class PlayerActor extends OneSpriteStaticActor {
 //    PlayerActor playerActor;
