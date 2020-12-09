@@ -11,9 +11,9 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 
 public class SensorActor extends OneSpriteStaticActor {
     public SensorActor(MyGame game, World world, float x, float y) {
-        super(game, "box2dhelper/ball.png");
+        super(game, "SensorActor.png");
         setPosition(x, y);
-        setSize(10, 10);
+        setSize(40, 5);
         MyFixtureDef myFixtureDef = new MyFixtureDef();
         myFixtureDef.density = 20;
         myFixtureDef.friction = 1;
