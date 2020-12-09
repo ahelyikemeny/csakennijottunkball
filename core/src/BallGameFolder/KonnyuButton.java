@@ -8,7 +8,7 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 
 public class KonnyuButton extends OneSpriteStaticActor {
     public KonnyuButton(MyGame game) {
-        super(game, "Easy gomb.png");
+        super(game, "EasyGomb.png");
         setSize(40,40);
         setPosition(10,40);
         this.addListener(new ClickListener() {

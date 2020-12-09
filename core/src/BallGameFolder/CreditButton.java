@@ -9,7 +9,7 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 
 public class CreditButton extends OneSpriteStaticActor {
     public CreditButton(MyGame game) {
-        super(game, "Credits gomb.png");
+        super(game, "Creditsgomb.png");
         setSize(40,40);
         this.addListener(new ClickListener() {
             @Override

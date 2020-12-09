@@ -8,7 +8,7 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 
 public class KozepesButton extends OneSpriteStaticActor {
     public KozepesButton(MyGame game) {
-        super(game, "Medium Gomb.png");
+        super(game, "MediumGomb.png");
         setSize(40,40);
         setPosition(60,40);
         this.addListener(new ClickListener() {
