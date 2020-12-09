@@ -6,6 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
+import java.awt.Point;
+
 import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.Box2DWorldHelper;
 import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.Box2dStage;
 import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.MyContactListener;
@@ -73,7 +75,7 @@ public class KonnyuStage extends Box2dStage {
         addActor(new GlobalWallActor(game,world, 70, 35, 20,10));
         MyLabel myLabel1 = new MyLabel(game, "", new PontCounter(game));
         addActor(myLabel1);
-        myLabel1.setPosition(75, 85);
+        myLabel1.setPosition(78, 85);
         myLabel1.setFontScale(0.3f);
 
 
@@ -81,7 +83,7 @@ public class KonnyuStage extends Box2dStage {
         addActor(sensorActor = new SensorActor(game,world,50,-3, 60, 5));
         MyLabel myLabel = new MyLabel(game, "", new CounterLabelStyle(game));
         addActor(myLabel);
-        myLabel.setPosition(68, 105);
+        myLabel.setPosition(70, 105);
         getHelper(sensorActor).addContactListener(new MyContactListener() {
             @Override
             public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
@@ -103,26 +105,26 @@ public class KonnyuStage extends Box2dStage {
 
 
 
-        addTimer(new MultiTickTimer(1f, 5, new MultiTickTimerListener(){
+        addTimer(new MultiTickTimer(1f, 180, new MultiTickTimerListener(){
             @Override
             public void onTick(MultiTickTimer sender, float correction, int count) {
                 super.onTick(sender, correction, count);
-                myLabel.setText(5-count);
-                myLabel.setFontScale(0.3f);
+                myLabel.setText(180-count);
+                myLabel.setFontScale(0.5f);
             }
 
             @Override
             public void onStart(MultiTickTimer sender) {
                 super.onStart(sender);
-                myLabel.setText(5);
-                myLabel.setFontScale(0.3f);
+                myLabel.setText(180);
+                myLabel.setFontScale(0.5f);
             }
 
             @Override
             public void onStop(MultiTickTimer sender) {
                 super.onStop(sender);
                 myLabel.setText("Game Over");
-                addActor(new GlobalWallActor(game, world, 50,50,20,20));
+                myLabel1.setText(point);
             }
         //getWorld().;
         }));
