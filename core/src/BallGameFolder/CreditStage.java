@@ -17,39 +17,39 @@ public class CreditStage extends MyStage {
         labelStyle.fontColor = Color.BLUE;
         addBackButtonScreenBackByStackPopListener();
         MyLabel label = new MyLabel(game, "Creators:", labelStyle);
-        label.setFontScale(0.5f);
-        label.setPosition(80,350);
+        label.setFontScale(0.2f);
+        label.setPosition(20,70);
         addActor(label);
 
 
         label = new MyLabel(game, "Kele Lorand", labelStyle);
-        label.setFontScale(0.5f);
-        label.setPosition(80,320);
+        label.setFontScale(0.2f);
+        label.setPosition(20,64);
         addActor(label);
 
         label = new MyLabel(game, "Fellner Milan", labelStyle);
-        label.setFontScale(0.5f);
-        label.setPosition(80,290);
+        label.setFontScale(0.2f);
+        label.setPosition(20,58);
         addActor(label);
 
         label = new MyLabel(game, "Zsebok David Ferenc", labelStyle);
-        label.setFontScale(0.5f);
-        label.setPosition(80,260);
+        label.setFontScale(0.2f);
+        label.setPosition(20,52);
         addActor(label);
 
         label = new MyLabel(game, "Kancsal Mate", labelStyle);
-        label.setFontScale(0.5f);
-        label.setPosition(80,230);
+        label.setFontScale(0.2f);
+        label.setPosition(20,46);
         addActor(label);
 
         label = new MyLabel(game, "Teacher:", labelStyle);
-        label.setFontScale(0.5f);
-        label.setPosition(80,200);
+        label.setFontScale(0.2f);
+        label.setPosition(20,40);
         addActor(label);
 
         label = new MyLabel(game, "Tuske Balazs", labelStyle);
-        label.setFontScale(0.5f);
-        label.setPosition(80,170);
+        label.setFontScale(0.2f);
+        label.setPosition(20,34);
         label.setColor(0,50,100,100);
         addActor(label);
 
