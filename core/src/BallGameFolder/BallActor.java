@@ -1,5 +1,6 @@
 package BallGameFolder;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -42,10 +43,10 @@ public class BallActor extends OneSpriteStaticActor {
                 public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
                     if (lastClick == null){
                         lastClick = new Vector2(myHelper.body.getPosition());
-                            game.getMyAssetManager().getSound("onclick.mp3").play();
+                            game.getMyAssetManager().getSound("onhit.wav").play();
                     }else{
                         if (lastClick.sub(myHelper.body.getPosition()).len() > 10f){
-                             game.getMyAssetManager().getSound("onclick.mp3").play();
+                             game.getMyAssetManager().getSound("onhit.wav").play();
                         }
                         lastClick.set(myHelper.body.getPosition());
                     }
