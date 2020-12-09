@@ -22,7 +22,7 @@ public class KozepesStage extends Box2dStage {
     protected PlayerActor player1;
 
     public KozepesStage(MyGame game) {
-        super(new ExtendViewport(150,90), game);
+        super(new ExtendViewport(160,90), game);
 
         addBackButtonScreenBackByStackPopListener();
         addActor(new InGameBackgroundActor(game));
