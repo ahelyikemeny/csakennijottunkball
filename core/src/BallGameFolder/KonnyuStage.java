@@ -1,5 +1,6 @@
 package BallGameFolder;
 
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -75,8 +76,8 @@ public class KonnyuStage extends Box2dStage {
         addActor(new GlobalWallActor(game,world, 70, 35, 20,10));
         MyLabel myLabel1 = new MyLabel(game, "", new PontCounter(game));
         addActor(myLabel1);
-        myLabel1.setPositionCenter();
         myLabel1.setFontScale(0.3f);
+        myLabel1.setPosition(75,85);
 
 
         SensorActor sensorActor;
@@ -111,6 +112,8 @@ public class KonnyuStage extends Box2dStage {
                 super.onTick(sender, correction, count);
                 myLabel.setText(5-count);
                 myLabel.setFontScale(0.5f);
+                game.getMyAssetManager().getSound("clock.wav").play();
+
             }
 
             @Override
@@ -124,8 +127,8 @@ public class KonnyuStage extends Box2dStage {
             public void onStop(MultiTickTimer sender) {
                 super.onStop(sender);
                 myLabel.setText("Game Over");
-                myLabel1.setText(point);
-                myLabel1.setPositionCenter();
+                addActor(new KonnyuButton(game));
+                addActor(new ExitButton(game));
             }
         //getWorld().;
         }));
