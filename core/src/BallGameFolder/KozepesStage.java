@@ -17,6 +17,7 @@ import hu.csanyzeg.master.MyBaseClasses.Game.MyGame;
 import hu.csanyzeg.master.MyBaseClasses.Timers.MultiTickTimer;
 import hu.csanyzeg.master.MyBaseClasses.Timers.MultiTickTimerListener;
 import hu.csanyzeg.master.MyBaseClasses.UI.MyLabel;
+import sun.management.Sensor;
 
 public class KozepesStage extends Box2dStage {
     protected PlayerActor player1;
@@ -56,7 +57,8 @@ public class KozepesStage extends Box2dStage {
         addActor(new GlobalWallActor(game, world, 45, 60, 60, 3));
         SensorActor sensorActor;
         addActor(sensorActor = new SensorActor(game,world,10,0, 60, 5));
-
+SensorActor1 sensorActor1;
+addActor(sensorActor1 = new SensorActor1(game,world,110, 110,30,5));
 
         getHelper(sensorActor).addContactListener(new MyContactListener() {
             @Override
