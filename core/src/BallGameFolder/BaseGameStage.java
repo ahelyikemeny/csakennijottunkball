@@ -104,7 +104,7 @@ public abstract class BaseGameStage extends Box2dStage {
             @Override
             public void onTick(MultiTickTimer sender, float correction, int count) {
                 super.onTick(sender, correction, count);
-                timerLabel.setText(playTime-count);
+                timerLabel.setText("Time: " + (playTime - count));
                 game.getMyAssetManager().getSound("clock.wav").play();
 
             }
@@ -112,7 +112,7 @@ public abstract class BaseGameStage extends Box2dStage {
             @Override
             public void onStart(MultiTickTimer sender) {
                 super.onStart(sender);
-                timerLabel.setText(playTime);
+                timerLabel.setText("Time: " + (playTime));
             }
 
             @Override
@@ -122,6 +122,7 @@ public abstract class BaseGameStage extends Box2dStage {
                 addActor(new BackButton(game,50,80));
                 addActor(new NewGameButton(game,90,80));
                 BaseGameStage.this.removeListener(moveListener);
+                player1.remove();
             }
         }));
 

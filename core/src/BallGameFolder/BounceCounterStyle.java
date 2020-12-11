@@ -8,6 +8,6 @@ import hu.csanyzeg.master.MyBaseClasses.Game.MyGame;
 
 public class BounceCounterStyle extends Label.LabelStyle {
     public BounceCounterStyle(MyGame game) {
-        super(game.getMyAssetManager().getFont("alegreyaregular.otf"), Color.WHITE);
+        super(game.getMyAssetManager().getFont("alegreyaregular.otf"), Color.BLACK);
     }
 }
