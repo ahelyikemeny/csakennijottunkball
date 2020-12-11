@@ -14,7 +14,7 @@ public class CreditStage extends MyStage {
         super(new ExtendViewport(160,120), game);
         setCameraResetToCenterOfScreen();
         Label.LabelStyle labelStyle = new Label.LabelStyle();
-        labelStyle.font = game.getMyAssetManager().getFont("alegreyaregular.otf");
+        labelStyle.font = game.getMyAssetManager().getFont("font.ttf");
         labelStyle.fontColor = Color.BLACK;
         addBackButtonScreenBackByStackPopListener();
         addActor(new InGameBackgroundActor(game));

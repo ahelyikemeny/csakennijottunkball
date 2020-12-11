@@ -47,7 +47,7 @@ public class PlayerActor extends OneSpriteStaticActor {
         super.setStage(stage);
         if (stage != null) {
             ((Box2DWorldHelper)getActorWorldHelper()).getBody().setFixedRotation(true);
-            target = new OneSpriteStaticActor(game, "badlogic.jpg");
+            target = new OneSpriteStaticActor(game, "PlayerActor.png");
             target.setPosition(getX(), getY());
             target.setSize(getWidth(), getHeight());
             target.setActorWorldHelper(new Box2DWorldHelper(world, target, ShapeType.Circle, new MyFixtureDef(), BodyDef.BodyType.StaticBody));
