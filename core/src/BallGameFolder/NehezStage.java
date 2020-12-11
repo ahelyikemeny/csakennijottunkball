@@ -36,15 +36,9 @@ public class NehezStage extends BaseGameStage {
         }
 
         //lentjobb
-        addActor(new GlobalWallActor(game, world, 70, 0, 10, 5));
-        addActor(new GlobalWallActor(game, world, 80, 0, 10, 5));
-        addActor(new GlobalWallActor(game, world, 90, 0, 10, 5));
-        addActor(new GlobalWallActor(game, world, 100, 0, 10, 5));
-        addActor(new GlobalWallActor(game, world, 110, 0, 10, 5));
-        addActor(new GlobalWallActor(game, world, 120, 0, 10, 5));
-        addActor(new GlobalWallActor(game, world, 130, 0, 10, 5));
-        addActor(new GlobalWallActor(game, world, 140, 0, 10, 5));
-        addActor(new GlobalWallActor(game, world, 150, 0, 10, 5));
+        for(int i = 70; i<=150; i = i + 10){
+            addActor(new GlobalWallActor(game, world, i, 0, 10, 5));
+        }
 
 //kozepplatform
 
