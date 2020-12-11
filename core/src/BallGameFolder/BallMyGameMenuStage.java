@@ -12,7 +12,8 @@ public class BallMyGameMenuStage extends MyStage {
     ExitButton exitButton;
     CreditButton creditButton;
     public BallMyGameMenuStage(MyGame game) {
-        super(new ExtendViewport(160,90), game);
+        super(new ExtendViewport(160,120), game);
+        setCameraResetToCenterOfScreen();
         addBackButtonScreenBackByStackPopListener();
         addActor(new BackgroundActor(game, 0,0));
         startButton = new StartButton(game);

@@ -15,7 +15,8 @@ public class BallMyGameStage extends Box2dStage {
     ExitButton exitButton;
     BallActor cameraBallActor;
     public BallMyGameStage(MyGame game) {
-        super(new ExtendViewport(150,90), game);
+        super(new ExtendViewport(160,120), game);
+        setCameraResetToCenterOfScreen();
         setTimeMultiply(3);
         addActor(new GroundActor(game, world, worldBodyEditorLoader, 0,0 ));
         addActor(cameraBallActor = new BallActor(game, world, 80,80));

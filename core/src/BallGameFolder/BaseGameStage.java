@@ -47,7 +47,8 @@ public abstract class BaseGameStage extends Box2dStage {
     }
 
     public BaseGameStage(MyGame game, int playTime) {
-        super(new ExtendViewport(160, 90), game);
+        super(new ExtendViewport(160,120), game);
+        setCameraResetToCenterOfScreen();
         addBackButtonScreenBackByStackPopListener();
         addActor(new InGameBackgroundActor(game));
         BallActor ballActor;

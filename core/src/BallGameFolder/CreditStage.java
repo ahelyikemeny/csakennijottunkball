@@ -11,7 +11,8 @@ import hu.csanyzeg.master.MyBaseClasses.UI.MyLabel;
 
 public class CreditStage extends MyStage {
     public CreditStage(MyGame game) {
-        super(new ExtendViewport(160,90), game);
+        super(new ExtendViewport(160,120), game);
+        setCameraResetToCenterOfScreen();
         Label.LabelStyle labelStyle = new Label.LabelStyle();
         labelStyle.font = game.getMyAssetManager().getFont("alegreyaregular.otf");
         labelStyle.fontColor = Color.BLACK;

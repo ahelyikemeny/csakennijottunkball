@@ -9,7 +9,8 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.ResponseViewport;
 
 public class BallmyGameStageSelector extends MyStage {
     public BallmyGameStageSelector(MyGame game) {
-        super(new ExtendViewport(160,90), game);
+        super(new ExtendViewport(160,120), game);
+        setCameraResetToCenterOfScreen();
         addBackButtonScreenBackByStackPopListener();
         addActor(new InGameBackgroundActor(game));
         addActor(new KonnyuButton(game));
