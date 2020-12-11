@@ -21,9 +21,24 @@ public class HelpStage extends MyStage {
         addActor(new InGameBackgroundActor(game));
         backButton = new BackButton(game, 140,0);
         addActor(backButton);
-        MyLabel label = new MyLabel(game, "Info", labelStyle);
+        MyLabel label = new MyLabel(game, "Info:", labelStyle);
         label.setFontScale(0.2f);
         label.setPosition(20,70);
+        addActor(label);
+
+        label = new MyLabel(game, "A piros kis korong segitsegevel kell a", labelStyle);
+        label.setFontScale(0.2f);
+        label.setPosition(20,60);
+        addActor(label);
+
+        label = new MyLabel(game, "labdat a zold teruletre lokodni mikozben", labelStyle);
+        label.setFontScale(0.2f);
+        label.setPosition(20,52);
+        addActor(label);
+
+        label = new MyLabel(game, "az akadalyokat ki kell kerulni", labelStyle);
+        label.setFontScale(0.2f);
+        label.setPosition(20,44);
         addActor(label);
 
 
