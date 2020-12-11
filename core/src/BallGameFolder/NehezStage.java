@@ -1,9 +1,12 @@
 package BallGameFolder;
 
+import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.Box2DWorldHelper;
 import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.Box2dStage;
+import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.MyContactListener;
 import hu.csanyzeg.master.MyBaseClasses.Game.MyGame;
 import hu.csanyzeg.master.MyBaseClasses.Scene2D.MyStage;
 
@@ -62,6 +65,28 @@ public class NehezStage extends BaseGameStage {
         addActor(new GlobalWallActor(game, world, 100, 30, 10, 5));
         addActor(new GlobalWallActor(game, world, 50, 40, 10, 5));
         addActor(new GlobalWallActor(game, world, 80, 40, 10, 5));
+
+
+        SensorActor sensorActor;
+        addActor(sensorActor = new SensorActor(game,world,10,0, 60, 3));
+
+        getHelper(sensorActor).addContactListener(new MyContactListener() {
+            @Override
+            public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
+                if (otherHelper.getActor() instanceof BallActor){
+                    otherHelper.getActor().setPosition(70,40);
+                    setPoint(getPoint()+1);
+
+                    otherHelper.invoke(new Runnable() {
+                        @Override
+                        public void run() {
+                            otherHelper.getBody().setLinearVelocity(0,0);
+                            otherHelper.getBody().setAngularVelocity(0);
+                        }
+                    });
+                }
+            }
+        });
     }
 
     public NehezStage(MyGame game) {
