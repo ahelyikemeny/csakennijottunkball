@@ -75,7 +75,7 @@ public class KonnyuStage extends BaseGameStage {
     }
 
     public KonnyuStage(MyGame game) {
-        super(game, 10);
+        super(game, 180);
     }
 
 

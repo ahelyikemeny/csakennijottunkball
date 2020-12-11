@@ -11,6 +11,7 @@ public class BallMyGameMenuStage extends MyStage {
     StartButton startButton;
     ExitButton exitButton;
     CreditButton creditButton;
+    InfoGomb infoGomb;
     public BallMyGameMenuStage(MyGame game) {
         super(new ExtendViewport(160,120), game);
         setCameraResetToCenterOfScreen();
@@ -33,6 +34,9 @@ public class BallMyGameMenuStage extends MyStage {
         creditButton = new CreditButton(game);
         creditButton.setPosition(60,20);
         addActor(creditButton);
+        infoGomb = new InfoGomb(game);
+        infoGomb.setPosition(60, -10);
+        addActor(infoGomb);
 
 
     }

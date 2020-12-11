@@ -128,6 +128,8 @@ public abstract class BaseGameStage extends Box2dStage {
             public void onStop(MultiTickTimer sender) {
                 super.onStop(sender);
                 timerLabel.setText("Game Over");
+                Vector3 v = ((OrthographicCamera)getCamera()).position;
+                setCameraMoveToXY(v.x,v.y + 25,0.5f);
                 addActor(new BackButton(game,50,80));
                 addActor(new NewGameButton(game,90,80));
                 BaseGameStage.this.removeListener(moveListener);
@@ -168,9 +170,11 @@ public abstract class BaseGameStage extends Box2dStage {
             @Override
             public void onTick(PermanentTimer sender, float correction) {
                 super.onTick(sender, correction);
-                Vector2 newspeed = ((Box2DWorldHelper)ballActor.getActorWorldHelper()).getBody().getLinearVelocity().scl(0.993f);
-                ((Box2DWorldHelper)ballActor.getActorWorldHelper()).getBody().setLinearVelocity(newspeed);
-                ((Box2DWorldHelper)ballActor.getActorWorldHelper()).getBody().setAngularVelocity(0.993f);
+                if (((Box2DWorldHelper) ballActor.getActorWorldHelper()).getBody() != null) {
+                    Vector2 newspeed = ((Box2DWorldHelper) ballActor.getActorWorldHelper()).getBody().getLinearVelocity().scl(0.993f);
+                    ((Box2DWorldHelper) ballActor.getActorWorldHelper()).getBody().setLinearVelocity(newspeed);
+                    ((Box2DWorldHelper) ballActor.getActorWorldHelper()).getBody().setAngularVelocity(0.993f);
+                }
             }
         }));
 
