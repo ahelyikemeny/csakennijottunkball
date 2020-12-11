@@ -9,6 +9,6 @@ import hu.csanyzeg.master.MyBaseClasses.UI.MyLabel;
 
 public class PontCounter extends Label.LabelStyle {
     public PontCounter(MyGame game) {
-        super(game.getMyAssetManager().getFont("alegreyaregular.otf"), Color.BLACK);
+        super(game.getMyAssetManager().getFont("font.ttf"), Color.BLACK);
     }
 }
