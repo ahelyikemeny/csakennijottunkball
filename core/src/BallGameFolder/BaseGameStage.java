@@ -20,7 +20,9 @@ public abstract class BaseGameStage extends Box2dStage {
     protected PlayerActor player1;
     private MyLabel timerLabel;
     private MyLabel pontCounter;
+    private MyLabel bounceCounter;
     private int point = 0;
+    private int ballhit = 0;
     private Vector2 lastClick = null;
 
 
@@ -33,10 +35,16 @@ public abstract class BaseGameStage extends Box2dStage {
 
     public void setPoint(int point) {
         this.point = point;
-        pontCounter.setText(point);
+        pontCounter.setText("Points:" +point);
     }
 
-
+    public int getBounce() {
+        return ballhit;
+    }
+    public void setBounce( int ballhit) {
+        this.ballhit = ballhit;
+        bounceCounter.setText("Bounces:" +ballhit);
+    }
 
     public BaseGameStage(MyGame game, int playTime) {
         super(new ExtendViewport(160, 90), game);
@@ -49,7 +57,9 @@ public abstract class BaseGameStage extends Box2dStage {
         addActor(player1);
         world.setGravity(new Vector2(0,0));
 
-        addListener(new ClickListener(){
+        ClickListener moveListener;
+
+        addListener(moveListener = new ClickListener(){
             @Override
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
                 //System.out.println("X: " + x + " Y: " + y + " Button: " + pointer);
@@ -71,10 +81,21 @@ public abstract class BaseGameStage extends Box2dStage {
         pontCounter.setFontScale(0.3f);
         pontCounter.setPositionCenter(95);
 
+
+        bounceCounter = new MyLabel(game, "",new BounceCounterStyle(game));
+        addActor(bounceCounter);
+        bounceCounter.setPositionCenter(85);
+        bounceCounter.setAlignment(2);
+        bounceCounter.setFontScale(0.3f);
+        setBounce(0);
+
         timerLabel = new MyLabel(game, "", new CounterLabelStyle(game));
         addActor(timerLabel);
-        timerLabel.setPositionCenter();
-        timerLabel.setY(105);
+        timerLabel.setPositionCenter(105);
+        timerLabel.setFontScale(0.5f);
+        timerLabel.setAlignment(2);
+        setPoint(0);
+
 
 
         addTimer(new MultiTickTimer(1f, playTime, new MultiTickTimerListener(){
@@ -98,27 +119,29 @@ public abstract class BaseGameStage extends Box2dStage {
                 timerLabel.setText("Game Over");
                 addActor(new BackButton(game,50,80));
                 addActor(new NewGameButton(game,90,80));
+                BaseGameStage.this.removeListener(moveListener);
             }
         }));
 
-        timerLabel.setFontScale(0.5f);
-        timerLabel.setAlignment(2);
-        setPoint(0);
+
 
 
 
         ((Box2DWorldHelper)ballActor.getActorWorldHelper()).addContactListener(new MyContactListener() {
             @Override
             public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
-                if (lastClick == null){
-                    lastClick = new Vector2(myHelper.body.getPosition());
-                    game.getMyAssetManager().getSound("onhit.wav").play();
-                }else{
-                    if (lastClick.sub(myHelper.body.getPosition()).len() > 5f){
+                if (otherHelper.getActor() instanceof GlobalWallActor) {
+                    if (lastClick == null) {
+                        lastClick = new Vector2(myHelper.body.getPosition());
                         game.getMyAssetManager().getSound("onhit.wav").play();
+                        setBounce(getBounce() + 1);
+                    } else {
+                        if (lastClick.sub(myHelper.body.getPosition()).len() > 5f) {
+                            game.getMyAssetManager().getSound("onhit.wav").play();
+                            setBounce(getBounce() + 1);
+                        }
+                        lastClick.set(myHelper.body.getPosition());
                     }
-                    lastClick.set(myHelper.body.getPosition());
-                }
 
                     /*
                     System.out.println(myHelper.getBody().getLinearVelocity().len());
@@ -126,8 +149,8 @@ public abstract class BaseGameStage extends Box2dStage {
                     s.play(speed < 35f ? 0f : (speed > 80f ? 1f : ( (speed - 20f) / 45f )));
 
                      */
-            }
-        });
+                }
+            }});
 
         addTimer(new PermanentTimer(new PermanentTimerListener(){
             @Override
