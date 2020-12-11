@@ -128,6 +128,8 @@ public abstract class BaseGameStage extends Box2dStage {
             public void onStop(MultiTickTimer sender) {
                 super.onStop(sender);
                 timerLabel.setText("Game Over");
+                Vector3 v = ((OrthographicCamera)getCamera()).position;
+                setCameraMoveToXY(v.x,v.y + 25,0.5f);
                 addActor(new BackButton(game,50,80));
                 addActor(new NewGameButton(game,90,80));
                 BaseGameStage.this.removeListener(moveListener);

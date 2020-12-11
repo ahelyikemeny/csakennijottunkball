@@ -12,6 +12,7 @@ public class NehezScreen extends MyScreen {
     @Override
     protected void afterAssetsLoaded() {
         addStage(new NehezStage(game),0,true);
+        ((BallMyGame)game).setMusic(BallMyGame.MusicType.GAME);
     }
 
     @Override
