@@ -8,9 +8,9 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import hu.csanyzeg.master.MyBaseClasses.Timers.OneTickTimer;
 import hu.csanyzeg.master.MyBaseClasses.Timers.OneTickTimerListener;
 
-public class NewGameButton extends OneSpriteStaticActor {
+public class NewGameEasyButton extends OneSpriteStaticActor {
     ClickListener c1;
-    public NewGameButton(MyGame game,float x, float y) {
+    public NewGameEasyButton(MyGame game, float x, float y) {
         super(game,"NewGame.png");
         setSize(20,20);
         setPosition(x,y);

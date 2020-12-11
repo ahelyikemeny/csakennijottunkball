@@ -112,6 +112,6 @@ public class NehezStage extends BaseGameStage {
     }
 
     public NehezStage(MyGame game) {
-        super(game, 60);
+        super(game, 2);
     }
 }

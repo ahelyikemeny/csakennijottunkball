@@ -131,7 +131,7 @@ public abstract class BaseGameStage extends Box2dStage {
                 Vector3 v = ((OrthographicCamera)getCamera()).position;
                 setCameraMoveToXY(v.x,v.y + 25,0.5f);
                 addActor(new BackButton(game,50,80));
-                addActor(new NewGameButton(game,90,80));
+                addActor(new NewGameHardButton(game,90,80));
                 BaseGameStage.this.removeListener(moveListener);
                 player1.remove();
             }
