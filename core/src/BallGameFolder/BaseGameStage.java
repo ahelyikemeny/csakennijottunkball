@@ -168,9 +168,11 @@ public abstract class BaseGameStage extends Box2dStage {
             @Override
             public void onTick(PermanentTimer sender, float correction) {
                 super.onTick(sender, correction);
-                Vector2 newspeed = ((Box2DWorldHelper)ballActor.getActorWorldHelper()).getBody().getLinearVelocity().scl(0.993f);
-                ((Box2DWorldHelper)ballActor.getActorWorldHelper()).getBody().setLinearVelocity(newspeed);
-                ((Box2DWorldHelper)ballActor.getActorWorldHelper()).getBody().setAngularVelocity(0.993f);
+                if (((Box2DWorldHelper) ballActor.getActorWorldHelper()).getBody() != null) {
+                    Vector2 newspeed = ((Box2DWorldHelper) ballActor.getActorWorldHelper()).getBody().getLinearVelocity().scl(0.993f);
+                    ((Box2DWorldHelper) ballActor.getActorWorldHelper()).getBody().setLinearVelocity(newspeed);
+                    ((Box2DWorldHelper) ballActor.getActorWorldHelper()).getBody().setAngularVelocity(0.993f);
+                }
             }
         }));
 
