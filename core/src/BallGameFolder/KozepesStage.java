@@ -17,54 +17,81 @@ import hu.csanyzeg.master.MyBaseClasses.Game.MyGame;
 import hu.csanyzeg.master.MyBaseClasses.Timers.MultiTickTimer;
 import hu.csanyzeg.master.MyBaseClasses.Timers.MultiTickTimerListener;
 import hu.csanyzeg.master.MyBaseClasses.UI.MyLabel;
-import sun.management.Sensor;
 
-public class KozepesStage extends Box2dStage {
-    protected PlayerActor player1;
+public class KozepesStage extends BaseGameStage {
 
-    public KozepesStage(MyGame game) {
-        super(new ExtendViewport(160,90), game);
+    @Override
+    public void buildLevel() {
+//fent
+        for(int i = 0; i<=150; i = i + 10){
+            addActor(new GlobalWallActor(game, world, i, 115, 10, 5));
+        }
 
-        addBackButtonScreenBackByStackPopListener();
-        addActor(new InGameBackgroundActor(game));
-        BallActor ballActor;
-        addActor(ballActor = new BallActor(game, world, 70,40));
-        addActor(new GlobalWallActor(game, world, 0, 0, 3, 30));
-        player1 = new PlayerActor(game, world, 10,50);
-        addActor(player1);
-        world.setGravity(new Vector2(0,0));
+        //bal
+        for(int i = 5; i<=113; i = i + 3){
+            addActor(new GlobalWallActor(game, world, 0, i, 6, 3));
 
-        addListener(new ClickListener(){
-            @Override
-            public void touchDragged(InputEvent event, float x, float y, int pointer) {
-                System.out.println("X: " + x + " Y: " + y + " Button: " + pointer);
-                player1.moveTo(x,y);
-            }
+            //jobb
+        }
+        for(int i = 5; i<=120; i = i + 3){
+            addActor(new GlobalWallActor(game, world, 154, i, 6, 3));
+        }
 
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                System.out.println("X: " + x + " Y: " + y + " Button: " + pointer);
-                player1.moveTo(x,y);
-                return super.touchDown(event, x, y, pointer, button);
-            }
-        });
-        addActor(new GlobalWallActor(game, world, 0, 0, 3, 114));
-        addActor(new GlobalWallActor(game, world, 3,0, 10, 3));
-        addActor(new GlobalWallActor(game, world, 40, 0, 114, 3));
-        addActor(new GlobalWallActor(game, world, 148, 0, 3, 114));
-        addActor(new GlobalWallActor(game, world, 138,110, 10, 3));
-        addActor(new GlobalWallActor(game, world, 0, 110, 114, 3));
-        addActor(new GlobalWallActor(game, world, 45, 60, 60, 3));
+        //lentbal
+        for(int i = 0; i<=40; i = i + 10){
+            addActor(new GlobalWallActor(game, world, i, 0, 10, 5));
+        }
+
+        //lentjobb
+
+        for(int i = 110; i<=150; i = i + 10){
+            addActor(new GlobalWallActor(game, world, i, 0, 10, 5));
+        }
+
+
+//propok
+
+        //bal
+
+        for(int i = 10; i<=30; i = i + 10){
+            addActor(new GlobalWallActor(game, world, 30, 50, 20, 10));
+        }
+
+//jobb
+
+        for(int i = 10; i<=30; i = i + 10){
+            addActor(new GlobalWallActor(game, world, 110, 50, 20, 10));
+        }
+
+//fent
+        for(int i = 10; i<=30; i = i + 10){
+            addActor(new GlobalWallActor(game, world, 70, 70, 20, 10));
+        }
+
+//lent
+        for(int i = 10; i<=30; i = i + 10){
+            addActor(new GlobalWallActor(game, world, 70, 30, 20, 10));
+        }
+
+        for(int i = 10; i<=30; i = i + 10){
+            addActor(new GlobalWallActor(game, world, 60, 10, 40, 10));
+        }
+
+
+
+
+
         SensorActor sensorActor;
-        addActor(sensorActor = new SensorActor(game,world,10,0, 60, 5));
-SensorActor1 sensorActor1;
-addActor(sensorActor1 = new SensorActor1(game,world,110, 110,30,5));
+        addActor(sensorActor = new SensorActor(game,world,50,0, 60, 3));
+
 
         getHelper(sensorActor).addContactListener(new MyContactListener() {
             @Override
             public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
                 if (otherHelper.getActor() instanceof BallActor){
                     otherHelper.getActor().setPosition(70,40);
+                    setPoint(getPoint()+1);
+
                     otherHelper.invoke(new Runnable() {
                         @Override
                         public void run() {
@@ -76,34 +103,9 @@ addActor(sensorActor1 = new SensorActor1(game,world,110, 110,30,5));
             }
         });
 
-        MyLabel myLabel = new MyLabel(game, "", new CounterLabelStyle(game));
-        addActor(myLabel);
-        myLabel.setPosition(68, 105);
-        myLabel.setFontScale(0.3f);
+    }
 
-
-        addTimer(new MultiTickTimer(1f, 180, new MultiTickTimerListener(){
-            @Override
-            public void onTick(MultiTickTimer sender, float correction, int count) {
-                super.onTick(sender, correction, count);
-                myLabel.setText(180-count);
-            }
-
-            @Override
-            public void onStart(MultiTickTimer sender) {
-                super.onStart(sender);
-                myLabel.setText(180);
-            }
-
-            @Override
-            public void onStop(MultiTickTimer sender) {
-                super.onStop(sender);
-                myLabel.setText("Game Over");
-            }
-        }));
-
-
-
-
+    public KozepesStage(MyGame game) {
+        super(game, 120);
     }
 }

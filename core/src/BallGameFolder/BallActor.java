@@ -31,44 +31,12 @@ public class BallActor extends OneSpriteStaticActor {
         setActorWorldHelper(new Box2DWorldHelper(world, this, ShapeType.Circle, myFixtureDef, BodyDef.BodyType.DynamicBody));
     }
 
-    Vector2 lastClick = null;
 
 
     @Override
     protected void setStage(Stage stage) {
         super.setStage(stage);
         if (stage != null){
-            ((Box2DWorldHelper)getActorWorldHelper()).addContactListener(new MyContactListener() {
-                @Override
-                public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
-                    if (lastClick == null){
-                        lastClick = new Vector2(myHelper.body.getPosition());
-                            game.getMyAssetManager().getSound("onhit.wav").play();
-                    }else{
-                        if (lastClick.sub(myHelper.body.getPosition()).len() > 10f){
-                             game.getMyAssetManager().getSound("onhit.wav").play();
-                        }
-                        lastClick.set(myHelper.body.getPosition());
-                    }
-
-                    /*
-                    System.out.println(myHelper.getBody().getLinearVelocity().len());
-                    float speed = myHelper.getBody().getLinearVelocity().len();
-                    s.play(speed < 35f ? 0f : (speed > 80f ? 1f : ( (speed - 20f) / 45f )));
-
-                     */
-                }
-            });
-
-            addTimer(new PermanentTimer(new PermanentTimerListener(){
-                @Override
-                public void onTick(PermanentTimer sender, float correction) {
-                    super.onTick(sender, correction);
-                    Vector2 newspeed = ((Box2DWorldHelper)BallActor.this.getActorWorldHelper()).getBody().getLinearVelocity().scl(0.993f);
-                    ((Box2DWorldHelper)BallActor.this.getActorWorldHelper()).getBody().setLinearVelocity(newspeed);
-                    ((Box2DWorldHelper)BallActor.this.getActorWorldHelper()).getBody().setAngularVelocity(0.993f);
-                }
-            }));
 
         }
     }
