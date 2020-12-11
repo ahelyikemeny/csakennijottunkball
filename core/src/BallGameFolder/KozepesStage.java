@@ -28,7 +28,7 @@ public class KozepesStage extends Box2dStage {
         addActor(new InGameBackgroundActor(game));
         BallActor ballActor;
         addActor(ballActor = new BallActor(game, world, 70,40));
-        addActor(new GlobalWallActor(game, world, 0, 0, 3, 30));
+
         player1 = new PlayerActor(game, world, 10,50);
         addActor(player1);
         world.setGravity(new Vector2(0,0));
@@ -47,15 +47,71 @@ public class KozepesStage extends Box2dStage {
                 return super.touchDown(event, x, y, pointer, button);
             }
         });
-        addActor(new GlobalWallActor(game, world, 0, 0, 3, 114));
-        addActor(new GlobalWallActor(game, world, 3,0, 10, 3));
-        addActor(new GlobalWallActor(game, world, 40, 0, 114, 3));
-        addActor(new GlobalWallActor(game, world, 148, 0, 3, 114));
-        addActor(new GlobalWallActor(game, world, 138,110, 10, 3));
-        addActor(new GlobalWallActor(game, world, 0, 110, 114, 3));
-        addActor(new GlobalWallActor(game, world, 45, 60, 60, 3));
+
+
+
+
+//fent
+        for(int i = 0; i<=150; i = i + 10){
+            addActor(new GlobalWallActor(game, world, i, 115, 10, 5));
+        }
+
+        //bal
+        for(int i = 5; i<=113; i = i + 3){
+            addActor(new GlobalWallActor(game, world, 0, i, 6, 3));
+
+            //jobb
+        }
+        for(int i = 5; i<=120; i = i + 3){
+            addActor(new GlobalWallActor(game, world, 154, i, 6, 3));
+        }
+
+        //lentbal
+        for(int i = 0; i<=40; i = i + 10){
+            addActor(new GlobalWallActor(game, world, i, 0, 10, 5));
+        }
+
+        //lentjobb
+
+        for(int i = 110; i<=150; i = i + 10){
+            addActor(new GlobalWallActor(game, world, i, 0, 10, 5));
+        }
+
+
+//propok
+
+        //bal
+
+        for(int i = 10; i<=30; i = i + 10){
+            addActor(new GlobalWallActor(game, world, 30, 50, 20, 10));
+        }
+
+//jobb
+
+        for(int i = 10; i<=30; i = i + 10){
+            addActor(new GlobalWallActor(game, world, 110, 50, 20, 10));
+        }
+
+//fent
+        for(int i = 10; i<=30; i = i + 10){
+            addActor(new GlobalWallActor(game, world, 70, 70, 20, 10));
+        }
+
+//lent
+        for(int i = 10; i<=30; i = i + 10){
+            addActor(new GlobalWallActor(game, world, 70, 30, 20, 10));
+        }
+
+        for(int i = 10; i<=30; i = i + 10){
+            addActor(new GlobalWallActor(game, world, 60, 10, 40, 10));
+        }
+
+
+
+
+
         SensorActor sensorActor;
-        addActor(sensorActor = new SensorActor(game,world,10,0, 60, 5));
+        addActor(sensorActor = new SensorActor(game,world,50,0, 60, 3));
 
 
         getHelper(sensorActor).addContactListener(new MyContactListener() {
