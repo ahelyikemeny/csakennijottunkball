@@ -1,6 +1,8 @@
 package BallGameFolder;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -49,6 +51,13 @@ public abstract class BaseGameStage extends Box2dStage {
     public BaseGameStage(MyGame game, int playTime) {
         super(new ExtendViewport(160,120), game);
         setCameraResetToCenterOfScreen();
+        /*
+        TODO:Game over
+
+        Vector3 v = ((OrthographicCamera)getCamera()).position;
+        setCameraMoveToXY(v.x,v.y + 25,0.5f);
+
+         */
         addBackButtonScreenBackByStackPopListener();
         addActor(new InGameBackgroundActor(game));
         BallActor ballActor;
@@ -80,20 +89,21 @@ public abstract class BaseGameStage extends Box2dStage {
         pontCounter = new MyLabel(game, "", new PontCounter(game));
         addActor(pontCounter);
         pontCounter.setFontScale(0.3f);
-        pontCounter.setPositionCenter(95);
-
+        pontCounter.setPosition(80, 105);
+        pontCounter.setFontScale(0.3f);
+        pontCounter.setAlignment(2);
 
         bounceCounter = new MyLabel(game, "",new BounceCounterStyle(game));
         addActor(bounceCounter);
-        bounceCounter.setPositionCenter(85);
+        bounceCounter.setPosition(80,95);
         bounceCounter.setAlignment(2);
         bounceCounter.setFontScale(0.3f);
         setBounce(0);
 
         timerLabel = new MyLabel(game, "", new CounterLabelStyle(game));
         addActor(timerLabel);
-        timerLabel.setPositionCenter(105);
-        timerLabel.setFontScale(0.5f);
+        timerLabel.setPosition(80,115);
+        timerLabel.setFontScale(0.3f);
         timerLabel.setAlignment(2);
         setPoint(0);
 
@@ -103,7 +113,7 @@ public abstract class BaseGameStage extends Box2dStage {
             @Override
             public void onTick(MultiTickTimer sender, float correction, int count) {
                 super.onTick(sender, correction, count);
-                timerLabel.setText(playTime-count);
+                timerLabel.setText("Time: " + (playTime - count));
                 game.getMyAssetManager().getSound("clock.wav").play();
 
             }
@@ -111,7 +121,7 @@ public abstract class BaseGameStage extends Box2dStage {
             @Override
             public void onStart(MultiTickTimer sender) {
                 super.onStart(sender);
-                timerLabel.setText(playTime);
+                timerLabel.setText("Time: " + (playTime));
             }
 
             @Override
@@ -121,6 +131,7 @@ public abstract class BaseGameStage extends Box2dStage {
                 addActor(new BackButton(game,50,80));
                 addActor(new NewGameButton(game,90,80));
                 BaseGameStage.this.removeListener(moveListener);
+                player1.remove();
             }
         }));
 
