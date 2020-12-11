@@ -2,6 +2,7 @@ package BallGameFolder;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -50,6 +51,13 @@ public abstract class BaseGameStage extends Box2dStage {
     public BaseGameStage(MyGame game, int playTime) {
         super(new ExtendViewport(160,120), game);
         setCameraResetToCenterOfScreen();
+        /*
+        TODO:Game over
+
+        Vector3 v = ((OrthographicCamera)getCamera()).position;
+        setCameraMoveToXY(v.x,v.y + 25,0.5f);
+
+         */
         addBackButtonScreenBackByStackPopListener();
         addActor(new InGameBackgroundActor(game));
         BallActor ballActor;
