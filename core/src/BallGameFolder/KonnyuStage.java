@@ -20,35 +20,11 @@ import hu.csanyzeg.master.MyBaseClasses.Timers.MultiTickTimerListener;
 import hu.csanyzeg.master.MyBaseClasses.UI.MyLabel;
 import jdk.nashorn.internal.objects.Global;
 
-public class KonnyuStage extends Box2dStage {
+public class KonnyuStage extends BaseGameStage {
 
-    protected PlayerActor player1;
-    protected int point = 0;
-    public KonnyuStage(MyGame game) {
-        super(new ExtendViewport(160, 90), game);
-        addBackButtonScreenBackByStackPopListener();
-        addActor(new InGameBackgroundActor(game));
-        BallActor ballActor;
-        addActor(ballActor = new BallActor(game, world, 75,75));
-        addActor(new GlobalWallActor(game, world, 0, 5, 6, 3));
-        player1 = new PlayerActor(game, world, 10,50);
-        addActor(player1);
-        world.setGravity(new Vector2(0,0));
+    @Override
+    public void buildLevel() {
 
-        addListener(new ClickListener(){
-            @Override
-            public void touchDragged(InputEvent event, float x, float y, int pointer) {
-                System.out.println("X: " + x + " Y: " + y + " Button: " + pointer);
-                player1.moveTo(x,y);
-            }
-
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                System.out.println("X: " + x + " Y: " + y + " Button: " + pointer);
-                player1.moveTo(x,y);
-                return super.touchDown(event, x, y, pointer, button);
-            }
-        });
         /*Vizszint also*/
         addActor(new GlobalWallActor(game, world, 0, 0, 10, 5));
         addActor(new GlobalWallActor(game, world, 10,0, 10, 5));
@@ -74,25 +50,16 @@ public class KonnyuStage extends Box2dStage {
         addActor(new GlobalWallActor(game,world, 30, 55, 20,10));
         addActor(new GlobalWallActor(game,world, 110, 55, 20,10));
         addActor(new GlobalWallActor(game,world, 70, 35, 20,10));
-        MyLabel myLabel1 = new MyLabel(game, "", new PontCounter(game));
-        addActor(myLabel1);
-        myLabel1.setFontScale(0.3f);
-        myLabel1.setPositionCenter(95);
 
         SensorActor sensorActor;
         addActor(sensorActor = new SensorActor(game,world,50,-3, 60, 5));
-        MyLabel myLabel = new MyLabel(game, "", new CounterLabelStyle(game));
-        addActor(myLabel);
-        myLabel.setPositionCenter();
-        myLabel.setY(105);
+
         getHelper(sensorActor).addContactListener(new MyContactListener() {
             @Override
             public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
                 if (otherHelper.getActor() instanceof BallActor){
                     otherHelper.getActor().setPosition(80,75);
-                    point++;
-                        myLabel1.setText(point);
-                        myLabel1.setColor(255,255,255,255);
+                    setPoint(getPoint() + 1);
                     otherHelper.invoke(new Runnable() {
                         @Override
                         public void run() {
@@ -105,33 +72,10 @@ public class KonnyuStage extends Box2dStage {
         });
 
 
+    }
 
-        addTimer(new MultiTickTimer(1f, 5, new MultiTickTimerListener(){
-            @Override
-            public void onTick(MultiTickTimer sender, float correction, int count) {
-                super.onTick(sender, correction, count);
-                myLabel.setText(5-count);
-                myLabel.setFontScale(0.5f);
-                game.getMyAssetManager().getSound("clock.wav").play();
-
-            }
-
-            @Override
-            public void onStart(MultiTickTimer sender) {
-                super.onStart(sender);
-                myLabel.setText(5);
-                myLabel.setFontScale(0.5f);
-            }
-
-            @Override
-            public void onStop(MultiTickTimer sender) {
-                super.onStop(sender);
-                myLabel.setText("Game Over");
-                addActor(new BackButton(game,50,80));
-                addActor(new NewGameButton(game,90,80));
-            }
-        //getWorld().;
-        }));
+    public KonnyuStage(MyGame game) {
+        super(game, 10);
     }
 
 

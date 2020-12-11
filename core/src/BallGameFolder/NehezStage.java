@@ -7,11 +7,10 @@ import hu.csanyzeg.master.MyBaseClasses.Box2dWorld.Box2dStage;
 import hu.csanyzeg.master.MyBaseClasses.Game.MyGame;
 import hu.csanyzeg.master.MyBaseClasses.Scene2D.MyStage;
 
-public class NehezStage extends Box2dStage {
-    public NehezStage(MyGame game) {
-        super(new ExtendViewport(150,90), game);
-        addBackButtonScreenBackByStackPopListener();
-        addActor(new InGameBackgroundActor(game));
+public class NehezStage extends BaseGameStage {
+
+    @Override
+    public void buildLevel() {
         //fent
         for(int i = 0; i<=110; i = i + 10){
             addActor(new GlobalWallActor(game, world, i, 115, 10, 5));
@@ -63,6 +62,9 @@ public class NehezStage extends Box2dStage {
         addActor(new GlobalWallActor(game, world, 100, 30, 10, 5));
         addActor(new GlobalWallActor(game, world, 50, 40, 10, 5));
         addActor(new GlobalWallActor(game, world, 80, 40, 10, 5));
+    }
 
+    public NehezStage(MyGame game) {
+        super(game, 30);
     }
 }

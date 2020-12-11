@@ -18,40 +18,10 @@ import hu.csanyzeg.master.MyBaseClasses.Timers.MultiTickTimer;
 import hu.csanyzeg.master.MyBaseClasses.Timers.MultiTickTimerListener;
 import hu.csanyzeg.master.MyBaseClasses.UI.MyLabel;
 
-public class KozepesStage extends Box2dStage {
-    protected PlayerActor player1;
-    int point = 0;
+public class KozepesStage extends BaseGameStage {
 
-    public KozepesStage(MyGame game) {
-        super(new ExtendViewport(160,90), game);
-
-        addBackButtonScreenBackByStackPopListener();
-        addActor(new InGameBackgroundActor(game));
-        BallActor ballActor;
-        addActor(ballActor = new BallActor(game, world, 70,40));
-
-        player1 = new PlayerActor(game, world, 10,50);
-        addActor(player1);
-        world.setGravity(new Vector2(0,0));
-
-        addListener(new ClickListener(){
-            @Override
-            public void touchDragged(InputEvent event, float x, float y, int pointer) {
-                System.out.println("X: " + x + " Y: " + y + " Button: " + pointer);
-                player1.moveTo(x,y);
-            }
-
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                System.out.println("X: " + x + " Y: " + y + " Button: " + pointer);
-                player1.moveTo(x,y);
-                return super.touchDown(event, x, y, pointer, button);
-            }
-        });
-
-
-
-
+    @Override
+    public void buildLevel() {
 //fent
         for(int i = 0; i<=150; i = i + 10){
             addActor(new GlobalWallActor(game, world, i, 115, 10, 5));
@@ -113,10 +83,6 @@ public class KozepesStage extends Box2dStage {
 
         SensorActor sensorActor;
         addActor(sensorActor = new SensorActor(game,world,50,0, 60, 3));
-        MyLabel myLabel1 = new MyLabel(game, "", new PontCounter(game));
-        addActor(myLabel1);
-        myLabel1.setFontScale(0.3f);
-
 
 
         getHelper(sensorActor).addContactListener(new MyContactListener() {
@@ -124,10 +90,7 @@ public class KozepesStage extends Box2dStage {
             public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
                 if (otherHelper.getActor() instanceof BallActor){
                     otherHelper.getActor().setPosition(70,40);
-                    point++;
-                    myLabel1.setText(point);
-                    myLabel1.setPositionCenter(95);
-
+                    setPoint(getPoint()+1);
 
                     otherHelper.invoke(new Runnable() {
                         @Override
@@ -140,36 +103,9 @@ public class KozepesStage extends Box2dStage {
             }
         });
 
-        MyLabel myLabel = new MyLabel(game, "", new CounterLabelStyle(game));
-        addActor(myLabel);
-        myLabel.setFontScale(0.3f);
-        myLabel.setPositionCenter(105);
+    }
 
-
-        addTimer(new MultiTickTimer(1f, 120, new MultiTickTimerListener(){
-            @Override
-            public void onTick(MultiTickTimer sender, float correction, int count) {
-                super.onTick(sender, correction, count);
-                myLabel.setText(120-count);
-            }
-
-            @Override
-            public void onStart(MultiTickTimer sender) {
-                super.onStart(sender);
-                myLabel.setText(120);
-            }
-
-            @Override
-            public void onStop(MultiTickTimer sender) {
-                super.onStop(sender);
-                myLabel.setText("Game Over");
-                addActor(new BackButton(game,50,80));
-                addActor(new NewGameButton(game,90,80));
-            }
-        }));
-
-
-
-
+    public KozepesStage(MyGame game) {
+        super(game, 120);
     }
 }
