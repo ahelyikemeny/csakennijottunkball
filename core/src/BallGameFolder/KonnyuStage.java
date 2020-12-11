@@ -77,14 +77,14 @@ public class KonnyuStage extends Box2dStage {
         MyLabel myLabel1 = new MyLabel(game, "", new PontCounter(game));
         addActor(myLabel1);
         myLabel1.setFontScale(0.3f);
-        myLabel1.setPosition(75,85);
-
+        myLabel1.setPositionCenter(95);
 
         SensorActor sensorActor;
         addActor(sensorActor = new SensorActor(game,world,50,-3, 60, 5));
         MyLabel myLabel = new MyLabel(game, "", new CounterLabelStyle(game));
         addActor(myLabel);
-        myLabel.setPosition(70, 105);
+        myLabel.setPositionCenter();
+        myLabel.setY(105);
         getHelper(sensorActor).addContactListener(new MyContactListener() {
             @Override
             public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
@@ -127,8 +127,8 @@ public class KonnyuStage extends Box2dStage {
             public void onStop(MultiTickTimer sender) {
                 super.onStop(sender);
                 myLabel.setText("Game Over");
-                addActor(new KonnyuButton(game));
-                addActor(new ExitButton(game));
+                addActor(new BackButton(game,50,80));
+                addActor(new NewGameButton(game,90,80));
             }
         //getWorld().;
         }));

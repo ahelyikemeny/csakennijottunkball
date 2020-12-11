@@ -20,6 +20,7 @@ import hu.csanyzeg.master.MyBaseClasses.UI.MyLabel;
 
 public class KozepesStage extends Box2dStage {
     protected PlayerActor player1;
+    int point = 0;
 
     public KozepesStage(MyGame game) {
         super(new ExtendViewport(160,90), game);
@@ -112,6 +113,10 @@ public class KozepesStage extends Box2dStage {
 
         SensorActor sensorActor;
         addActor(sensorActor = new SensorActor(game,world,50,0, 60, 3));
+        MyLabel myLabel1 = new MyLabel(game, "", new PontCounter(game));
+        addActor(myLabel1);
+        myLabel1.setFontScale(0.3f);
+
 
 
         getHelper(sensorActor).addContactListener(new MyContactListener() {
@@ -119,6 +124,11 @@ public class KozepesStage extends Box2dStage {
             public void beginContact(Contact contact, Box2DWorldHelper myHelper, Box2DWorldHelper otherHelper) {
                 if (otherHelper.getActor() instanceof BallActor){
                     otherHelper.getActor().setPosition(70,40);
+                    point++;
+                    myLabel1.setText(point);
+                    myLabel1.setPositionCenter(95);
+
+
                     otherHelper.invoke(new Runnable() {
                         @Override
                         public void run() {
@@ -132,27 +142,29 @@ public class KozepesStage extends Box2dStage {
 
         MyLabel myLabel = new MyLabel(game, "", new CounterLabelStyle(game));
         addActor(myLabel);
-        myLabel.setPosition(68, 105);
         myLabel.setFontScale(0.3f);
+        myLabel.setPositionCenter(105);
 
 
-        addTimer(new MultiTickTimer(1f, 180, new MultiTickTimerListener(){
+        addTimer(new MultiTickTimer(1f, 120, new MultiTickTimerListener(){
             @Override
             public void onTick(MultiTickTimer sender, float correction, int count) {
                 super.onTick(sender, correction, count);
-                myLabel.setText(180-count);
+                myLabel.setText(120-count);
             }
 
             @Override
             public void onStart(MultiTickTimer sender) {
                 super.onStart(sender);
-                myLabel.setText(180);
+                myLabel.setText(120);
             }
 
             @Override
             public void onStop(MultiTickTimer sender) {
                 super.onStop(sender);
                 myLabel.setText("Game Over");
+                addActor(new BackButton(game,50,80));
+                addActor(new NewGameButton(game,90,80));
             }
         }));
 
