@@ -71,7 +71,7 @@ public class NehezStage extends BaseGameStage {
         SensorActor1 sensorActor1;
 
         addActor(sensorActor = new SensorActor(game, world, 20, 0, 50, 3));
-        addActor(sensorActor1 = new SensorActor1(game, world, 120, 115, 35, 6));
+        addActor(sensorActor1 = new SensorActor1(game, world, 120, 120, 35, 6));
         sensorActor1.setVisible(false);
 
         getHelper(sensorActor1).addContactListener(new MyContactListener() {
