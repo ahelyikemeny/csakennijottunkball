@@ -36,7 +36,7 @@ public class HelpStage extends MyStage {
         label.setPosition(20,52);
         addActor(label);
 
-        label = new MyLabel(game, "az akadalyokat ki kell kerulni", labelStyle);
+        label = new MyLabel(game, "az akadalyokat ki kell kerulni.", labelStyle);
         label.setFontScale(0.2f);
         label.setPosition(20,44);
         addActor(label);
