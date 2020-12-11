@@ -10,6 +10,7 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.MyStage;
 import hu.csanyzeg.master.MyBaseClasses.UI.MyLabel;
 
 public class CreditStage extends MyStage {
+    BackButton backButton;
     public CreditStage(MyGame game) {
         super(new ExtendViewport(160,120), game);
         setCameraResetToCenterOfScreen();
@@ -18,6 +19,8 @@ public class CreditStage extends MyStage {
         labelStyle.fontColor = Color.BLACK;
         addBackButtonScreenBackByStackPopListener();
         addActor(new InGameBackgroundActor(game));
+        backButton = new BackButton(game, 140,0);
+        addActor(backButton);
         MyLabel label = new MyLabel(game, "Creators:", labelStyle);
         label.setFontScale(0.2f);
         label.setPosition(20,70);
