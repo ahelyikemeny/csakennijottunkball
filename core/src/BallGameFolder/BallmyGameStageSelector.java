@@ -8,6 +8,7 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.MyStage;
 import hu.csanyzeg.master.MyBaseClasses.Scene2D.ResponseViewport;
 
 public class BallmyGameStageSelector extends MyStage {
+    BackButton backButton;
     public BallmyGameStageSelector(MyGame game) {
         super(new ExtendViewport(160,120), game);
         setCameraResetToCenterOfScreen();
@@ -16,6 +17,8 @@ public class BallmyGameStageSelector extends MyStage {
         addActor(new KonnyuButton(game));
         addActor(new KozepesButton(game));
         addActor(new NehezButton(game));
+        backButton = new BackButton(game, 140,0);
+        addActor(backButton);
 
     }
 }
