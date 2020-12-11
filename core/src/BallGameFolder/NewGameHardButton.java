@@ -11,7 +11,7 @@ import hu.csanyzeg.master.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 public class NewGameHardButton extends OneSpriteStaticActor {
     ClickListener c1;
     public NewGameHardButton(MyGame game, float x, float y) {
-        super(game,"NewGame.png");
+        super(game,"NewGameButton.png");
         setSize(20,20);
         setPosition(x,y);
         this.addListener(c1 = new ClickListener() {

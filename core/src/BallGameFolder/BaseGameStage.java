@@ -130,8 +130,8 @@ public abstract class BaseGameStage extends Box2dStage {
                 timerLabel.setText("Game Over");
                 Vector3 v = ((OrthographicCamera)getCamera()).position;
                 setCameraMoveToXY(v.x,v.y + 25,0.5f);
-                addActor(new BackButton(game,50,80));
-                addActor(new NewGameHardButton(game,90,80));
+                addActor(new BackButton(game,50,60));
+                addActor(new NewGameHardButton(game,90,60));
                 BaseGameStage.this.removeListener(moveListener);
                 player1.remove();
             }
@@ -147,11 +147,11 @@ public abstract class BaseGameStage extends Box2dStage {
                 if (otherHelper.getActor() instanceof GlobalWallActor) {
                     if (lastClick == null) {
                         lastClick = new Vector2(myHelper.body.getPosition());
-                        game.getMyAssetManager().getSound("onhit.wav").play();
+                        game.getMyAssetManager().getSound("onhit.mp3").play();
                         setBounce(getBounce() + 1);
                     } else {
                         if (lastClick.sub(myHelper.body.getPosition()).len() > 5f) {
-                            game.getMyAssetManager().getSound("onhit.wav").play();
+                            game.getMyAssetManager().getSound("onhit.mp3").play();
                             setBounce(getBounce() + 1);
                         }
                         lastClick.set(myHelper.body.getPosition());
