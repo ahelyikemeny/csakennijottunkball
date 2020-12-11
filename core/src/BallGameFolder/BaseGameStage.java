@@ -1,5 +1,6 @@
 package BallGameFolder;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -80,19 +81,19 @@ public abstract class BaseGameStage extends Box2dStage {
         pontCounter = new MyLabel(game, "", new PontCounter(game));
         addActor(pontCounter);
         pontCounter.setFontScale(0.3f);
-        pontCounter.setPositionCenter(95);
-
+        pontCounter.setPosition(80, 95);
+        pontCounter.setAlignment(2);
 
         bounceCounter = new MyLabel(game, "",new BounceCounterStyle(game));
         addActor(bounceCounter);
-        bounceCounter.setPositionCenter(85);
+        bounceCounter.setPosition(80,85);
         bounceCounter.setAlignment(2);
         bounceCounter.setFontScale(0.3f);
         setBounce(0);
 
         timerLabel = new MyLabel(game, "", new CounterLabelStyle(game));
         addActor(timerLabel);
-        timerLabel.setPositionCenter(105);
+        timerLabel.setPosition(80,105);
         timerLabel.setFontScale(0.5f);
         timerLabel.setAlignment(2);
         setPoint(0);
